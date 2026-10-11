@@ -254,16 +254,53 @@
     background: #2a3441; border: none; color: #fff; width: 40px; height: 40px;
     border-radius: 50%; cursor: pointer; font-size: 20px; }
 
-  @media (max-width: 768px) {
-    .sidebar { width: 100%; }
-    .chat-area { position: fixed; inset: 0; z-index: 100;
-      transform: translateX(100%); transition: transform 0.25s ease; }
-    .chat-area.open { transform: translateX(0); }
-    .back-btn { display: block; }
-    .msg-wrap { max-width: 85%; }
-    .msg-actions { display: none !important; }
-    .msg-wrap.touched .msg-actions { display: flex !important; }
+@media (max-width: 768px) {
+  body { flex-direction: column; }
+
+  .sidebar {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border-right: none;
   }
+
+  .sidebar-header { padding: 10px 14px; }
+  .sidebar-tabs button { padding: 12px 8px; font-size: 12px; }
+  .search-box { padding: 10px 14px; }
+
+  .chat-item, .contact-item, .post { padding: 12px 14px; }
+
+  .chat-area {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+  }
+  .chat-area.open { transform: translateX(0); }
+
+  .back-btn { display: block; }
+  .msg-wrap { max-width: 85%; }
+
+  .msg-actions { display: none !important; }
+  .msg-wrap.touched .msg-actions { display: flex !important; }
+
+  /* Модалки на телефоне */
+  .modal { padding: 20px 16px; }
+  .auth-box { padding: 24px 18px; }
+  .auth-box h1 { font-size: 22px; }
+
+  /* Картинки в постах не вылезают */
+  .post-image { max-width: 100%; }
+
+  /* Клавиатура не перекрывает поле ввода */
+  .input-bar { padding: 8px 12px; }
+  .input-bar input[type="text"] { font-size: 16px; } /* важно: 16px предотвращает зум iOS */
+  .attach-btn, .send-btn { width: 40px; height: 40px; font-size: 16px; }
+}
 </style>
 </head>
 <body>
