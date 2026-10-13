@@ -46,15 +46,11 @@
 html, body { height:100%; }
 body { font-family:var(--font); background:var(--bg); color:var(--text);
   display:flex; height:100vh; height:100dvh; overflow:hidden; font-size:var(--font-size); }
-
-/* Логотип */
 .logo-svg { display:block; margin:0 auto; color:var(--logo-color); }
 .logo-svg .star-path { fill:currentColor; }
 .logo-svg .star-text { fill:currentColor; font-family:Georgia,"Times New Roman",serif; font-weight:400; letter-spacing:6px; }
 .logo-big { width:140px; height:180px; }
 .logo-small { width:36px; height:36px; }
-
-/* Авторизация */
 #authScreen { flex:1; display:flex; align-items:center; justify-content:center;
   padding:20px; background:var(--bg); overflow-y:auto; }
 .auth-box { width:100%; max-width:420px; background:var(--bg-2);
@@ -85,10 +81,7 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .btn.danger { background:var(--danger); }
 .btn.danger:hover { background:var(--danger-hover); }
 .msg { text-align:center; font-size:13px; margin-top:14px; min-height:18px; }
-.msg.error { color:var(--danger); } .msg.success { color:#4ade80; }
-.msg.info { color:var(--accent); }
-
-/* Основной интерфейс */
+.msg.error { color:var(--danger); } .msg.success { color:#4ade80; } .msg.info { color:var(--accent); }
 #appScreen { display:none; flex:1; width:100%; }
 #appScreen.active { display:flex; }
 .sidebar { width:360px; background:var(--bg-2); border-right:1px solid var(--border);
@@ -138,8 +131,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .unread-badge { background:var(--accent); color:#fff; border-radius:12px;
   padding:2px 7px; font-size:11px; font-weight:700; flex-shrink:0; }
 .empty-hint { padding:40px 20px; text-align:center; color:var(--text-mute); font-size:13px; }
-
-/* Посты */
 .post { padding:14px 16px; border-bottom:1px solid var(--bg-3); }
 .post-head { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
 .post-head .avatar { width:36px; height:36px; font-size:13px; cursor:pointer; }
@@ -172,8 +163,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .post-preview .remove { position:absolute; top:-8px; right:-8px; width:24px; height:24px;
   border-radius:50%; background:var(--danger); color:#fff; border:none;
   cursor:pointer; font-size:14px; line-height:1; }
-
-/* Чат */
 .chat-area { flex:1; display:flex; flex-direction:column; background:var(--bg);
   min-width:0; position:relative; }
 .chat-header { padding:12px 16px; border-bottom:1px solid var(--border);
@@ -199,6 +188,12 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .msg-bubble.deleted { font-style:italic; opacity:0.6; }
 .msg-bubble img.chat-image { max-width:100%; border-radius:8px; display:block;
   margin-bottom:4px; cursor:pointer; max-height:300px; }
+.msg-bubble audio.chat-audio { max-width:100%; margin-bottom:4px; display:block; }
+.msg-bubble a.file-link { display:flex; align-items:center; gap:8px;
+  color:inherit; text-decoration:none; padding:4px 0; }
+.msg-bubble a.file-link .file-icon { font-size:22px; }
+.msg-bubble a.file-link .file-name { font-size:13px; word-break:break-all; }
+.msg-bubble.frozen { opacity:0.5; }
 .msg-meta { font-size:10px; opacity:0.75; margin-top:3px;
   display:flex; gap:4px; align-items:center; justify-content:flex-end; }
 .msg-bubble.edited .msg-meta::before { content:'изм.'; font-size:9px;
@@ -229,6 +224,8 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   width:42px; height:42px; border-radius:50%; cursor:pointer; font-size:18px;
   flex-shrink:0; display:flex; align-items:center; justify-content:center; }
 .input-bar .attach-btn:hover { background:var(--bg-4); color:var(--text); }
+.input-bar .attach-btn.rec { background:var(--danger); color:#fff; animation:pulse 1s infinite; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
 .input-bar input[type="text"] { flex:1; padding:12px 16px; border-radius:22px;
   border:1px solid var(--border); background:var(--bg); color:var(--text);
   font-size:15px; outline:none; font-family:inherit; }
@@ -241,8 +238,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .blocked-banner { padding:12px 16px; background:var(--danger);
   color:#fff; text-align:center; font-size:13px; font-weight:600; display:none; }
 .blocked-banner.show { display:block; }
-
-/* Найденные пользователи */
 .found-user { background:var(--bg-4); border-radius:10px; padding:10px;
   display:flex; align-items:center; gap:10px; cursor:pointer; margin-bottom:6px; }
 .found-user:hover { background:var(--border); }
@@ -255,16 +250,12 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   color:var(--text-dim); padding:6px 10px; border-radius:6px;
   cursor:pointer; font-size:14px; }
 .found-user .actions button:hover { background:var(--bg-4); color:var(--text); }
-
-/* Контакты */
 .contact-item .actions { display:flex; gap:4px; }
 .contact-item .actions button { background:var(--border); border:none;
   color:var(--text-dim); padding:6px 10px; border-radius:6px;
   cursor:pointer; font-size:14px; }
 .contact-item .actions button:hover { background:var(--bg-4); color:var(--text); }
 .contact-item .actions button.danger:hover { background:var(--danger); color:#fff; }
-
-/* Модалки */
 .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7);
   display:none; align-items:center; justify-content:center;
   z-index:1000; padding:20px; overflow-y:auto; }
@@ -290,8 +281,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .settings-section { margin-bottom:22px; }
 .settings-section h3 { font-size:13px; color:var(--text-dim);
   text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; font-weight:700; }
-
-/* Аватар */
 .avatar-picker { display:flex; gap:14px; align-items:center; margin-bottom:14px; }
 .avatar-picker .avatar { width:80px; height:80px; font-size:28px;
   background-size:cover; background-position:center; }
@@ -300,8 +289,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   cursor:pointer; font-size:13px; background:var(--border);
   color:var(--text); font-family:inherit; }
 .avatar-picker .btns button:hover { background:var(--bg-4); }
-
-/* Темы */
 .theme-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
 .theme-option { padding:12px; border-radius:10px; border:2px solid var(--border);
   cursor:pointer; text-align:center; font-size:13px; font-weight:600; transition:0.15s; }
@@ -318,8 +305,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .font-size-row { display:flex; align-items:center; gap:12px; }
 .font-size-row input[type="range"] { flex:1; }
 .font-size-row span { min-width:40px; text-align:right; font-weight:600; }
-
-/* Админ */
 .admin-user-row { display:flex; align-items:center; gap:10px;
   padding:10px; border-bottom:1px solid var(--border); }
 .admin-user-row .avatar { width:36px; height:36px; font-size:13px; }
@@ -327,7 +312,7 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .admin-user-row .meta .name { font-size:13px; font-weight:700; }
 .admin-user-row .meta .id { font-size:11px; color:var(--accent); }
 .admin-user-row .meta .status { font-size:11px; color:var(--danger); font-weight:600; }
-.admin-user-row .actions { display:flex; gap:4px; }
+.admin-user-row .actions { display:flex; gap:4px; flex-wrap:wrap; }
 .admin-user-row .actions button { background:var(--border); border:none;
   color:var(--text-dim); padding:6px 8px; border-radius:6px;
   cursor:pointer; font-size:12px; }
@@ -339,8 +324,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .admin-chat-msg .from { font-weight:700; color:var(--accent); font-size:12px; }
 .admin-chat-msg .time { font-size:10px; color:var(--text-mute); float:right; }
 .admin-chat-msg .text { margin-top:3px; word-wrap:break-word; }
-
-/* Прочее */
 .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
   background:var(--bg-4); color:var(--text); padding:12px 22px;
   border-radius:10px; font-size:14px; z-index:2000;
@@ -364,7 +347,56 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .spinner { width:40px; height:40px; border:3px solid var(--border);
   border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
-
+.group-member { display:flex; align-items:center; gap:10px; padding:8px 0;
+  border-bottom:1px solid var(--border); }
+.group-member .avatar { width:32px; height:32px; font-size:12px; }
+.group-member .name { flex:1; font-size:13px; }
+.group-member button { background:var(--danger); border:none; color:#fff;
+  padding:4px 8px; border-radius:6px; cursor:pointer; font-size:12px; }
+.emoji-panel { position:absolute; bottom:100%; right:0; margin-bottom:8px;
+  background:var(--bg-2); border:1px solid var(--border); border-radius:12px;
+  padding:8px; display:none; width:280px; max-height:240px; overflow-y:auto;
+  box-shadow:0 6px 20px rgba(0,0,0,0.5); z-index:100; }
+.emoji-panel.open { display:block; }
+.emoji-panel .emoji-grid { display:grid;
+  grid-template-columns:repeat(8, 1fr); gap:4px; }
+.emoji-panel .emoji-grid button { background:none; border:none; font-size:22px;
+  cursor:pointer; padding:4px; border-radius:6px; }
+.emoji-panel .emoji-grid button:hover { background:var(--bg-4); }
+.call-overlay { position:fixed; inset:0; background:#000; z-index:4000;
+  display:none; flex-direction:column; color:#fff; }
+.call-overlay.open { display:flex; }
+.call-video { flex:1; position:relative; display:flex; align-items:center; justify-content:center; }
+.call-video video { width:100%; height:100%; object-fit:cover; background:#111; }
+.call-video .remote-video { position:absolute; inset:0; }
+.call-video .local-video { position:absolute; top:16px; right:16px;
+  width:120px; height:160px; border-radius:12px; overflow:hidden;
+  border:2px solid #fff; box-shadow:0 4px 16px rgba(0,0,0,0.6); z-index:2; }
+.call-info { position:absolute; top:24px; left:24px; z-index:2; }
+.call-info .name { font-size:22px; font-weight:700; }
+.call-info .status { font-size:14px; opacity:0.8; margin-top:4px; }
+.call-controls { padding:24px; display:flex; justify-content:center;
+  gap:20px; background:rgba(0,0,0,0.9); }
+.call-controls button { width:64px; height:64px; border-radius:50%; border:none;
+  background:#2a3441; color:#fff; font-size:26px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:0.15s; }
+.call-controls button:hover { background:#3a4551; }
+.call-controls button.end { background:var(--danger); }
+.call-controls button.end:hover { background:var(--danger-hover); }
+.call-controls button.active { background:var(--accent); }
+.incoming-call { position:fixed; bottom:20px; right:20px;
+  background:var(--bg-2); border:1px solid var(--accent); border-radius:16px;
+  padding:20px; z-index:3500; box-shadow:0 10px 40px rgba(0,0,0,0.6);
+  display:none; width:300px; }
+.incoming-call.open { display:block; }
+.incoming-call .who { font-size:15px; font-weight:700; margin-bottom:6px; }
+.incoming-call .type { font-size:12px; color:var(--text-dim); margin-bottom:14px; }
+.incoming-call .btns { display:flex; gap:10px; }
+.incoming-call .btns button { flex:1; padding:12px; border-radius:10px;
+  border:none; cursor:pointer; font-weight:700; font-size:14px; }
+.incoming-call .btns .accept { background:#4ade80; color:#000; }
+.incoming-call .btns .reject { background:var(--danger); color:#fff; }
 @media (max-width:768px) {
   .sidebar { width:100%; }
   .chat-area { position:fixed; inset:0; z-index:100;
@@ -374,6 +406,8 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   .msg-wrap { max-width:85%; }
   .msg-actions { display:none !important; }
   .msg-wrap.touched .msg-actions { display:flex !important; }
+  .emoji-panel { width:260px; }
+  .call-video .local-video { width:90px; height:120px; }
 }
 </style>
 </head>
@@ -431,16 +465,25 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
     </div>
     <div class="sidebar-tabs">
       <button id="tabChats" class="active" onclick="switchSidebarTab('chats')">Чаты</button>
+      <button id="tabGroups" onclick="switchSidebarTab('groups')">Группы</button>
       <button id="tabPosts" onclick="switchSidebarTab('posts')">Посты</button>
       <button id="tabContacts" onclick="switchSidebarTab('contacts')">Контакты</button>
     </div>
     <div class="tab-content" id="contentChats">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Поиск: имя, логин или ID" oninput="searchUser()">
+        <input type="text" id="searchInput" placeholder="Поиск: имя, email или ID" oninput="searchUser()">
         <div id="searchResult"></div>
       </div>
       <div id="chatsList" style="flex:1; overflow-y:auto;">
         <div class="empty-hint">Пока нет чатов.<br>Найдите пользователя через поиск.</div>
+      </div>
+    </div>
+    <div class="tab-content hidden" id="contentGroups">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--border);">
+        <button class="btn" style="margin:0" onclick="openCreateGroup()">+ Создать группу</button>
+      </div>
+      <div id="groupsList" style="flex:1; overflow-y:auto;">
+        <div class="empty-hint">Нет групп.<br>Создайте первую!</div>
       </div>
     </div>
     <div class="tab-content hidden" id="contentPosts">
@@ -469,10 +512,12 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
     <div class="chat-header" id="chatHeader" style="display:none">
       <button class="back-btn" onclick="closeChat()">←</button>
       <div class="avatar" id="chatAvatar">?</div>
-      <div class="info" style="cursor:pointer" onclick="openUserProfile(activeChatId)">
+      <div class="info" style="cursor:pointer" onclick="openChatInfo()">
         <div class="name" id="chatName">—</div>
         <div class="id" id="chatId">—</div>
       </div>
+      <button class="icon-btn" id="audioCallBtn" onclick="startAudioCall()" title="Аудиозвонок">📞</button>
+      <button class="icon-btn" id="videoCallBtn" onclick="startVideoCall()" title="Видеозвонок">🎥</button>
       <button class="icon-btn" onclick="openWallpaperSettings()" title="Обои">🎨</button>
       <button class="icon-btn" id="blockBtn" onclick="toggleBlockUser()" title="Заблокировать">🚫</button>
     </div>
@@ -480,11 +525,17 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
     <div class="blocked-banner" id="blockedBanner">
       🚫 Вы заблокировали этого пользователя. Разблокируйте, чтобы писать.
     </div>
-    <div class="input-bar" id="inputBar" style="display:none">
+    <div class="input-bar" id="inputBar" style="display:none; position:relative;">
       <button class="attach-btn" onclick="pickAttachment()" title="Картинка">🖼</button>
+      <button class="attach-btn" onclick="pickFile()" title="Файл">📎</button>
+      <button class="attach-btn" id="emojiBtn" onclick="toggleEmoji()" title="Эмодзи">😀</button>
+      <button class="attach-btn" id="voiceBtn" onclick="toggleVoiceRecord()" title="Голосовое">🎤</button>
       <input type="text" id="messageInput" placeholder="Напишите сообщение..."
              onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}">
       <button class="send-btn" onclick="sendMessage()">➤</button>
+      <div class="emoji-panel" id="emojiPanel">
+        <div class="emoji-grid" id="emojiGrid"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -498,6 +549,32 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   <img id="imageViewerImg" src="" alt="">
 </div>
 
+<div class="call-overlay" id="callOverlay">
+  <div class="call-video">
+    <video id="remoteVideo" class="remote-video" autoplay playsinline></video>
+    <div class="local-video"><video id="localVideo" autoplay playsinline muted></video></div>
+    <div class="call-info">
+      <div class="name" id="callName">—</div>
+      <div class="status" id="callStatus">Соединение...</div>
+    </div>
+  </div>
+  <div class="call-controls">
+    <button id="muteBtn" onclick="toggleMute()" title="Микрофон">🎤</button>
+    <button id="camBtn" onclick="toggleCamera()" title="Камера">📹</button>
+    <button id="speakerBtn" onclick="toggleSpeaker()" title="Динамик">🔊</button>
+    <button class="end" onclick="endCall()" title="Завершить">📵</button>
+  </div>
+</div>
+
+<div class="incoming-call" id="incomingCall">
+  <div class="who" id="incomingWho">—</div>
+  <div class="type" id="incomingType">Входящий звонок</div>
+  <div class="btns">
+    <button class="reject" onclick="rejectCall()">Отклонить</button>
+    <button class="accept" onclick="acceptCall()">Принять</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 <div class="loading-overlay" id="loadingOverlay">
   <div class="spinner"></div>
@@ -505,8 +582,10 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 </div>
 
 <input type="file" id="fileInputMsg" accept="image/*" style="display:none">
+<input type="file" id="fileInputFile" accept=".pdf,.doc,.docx,.txt,.zip,.rar,.xls,.xlsx,.ppt,.pptx" style="display:none">
 <input type="file" id="fileInputAvatar" accept="image/*" style="display:none">
 <input type="file" id="fileInputPost" accept="image/*" style="display:none">
+<input type="file" id="fileInputGroupAvatar" accept="image/*" style="display:none">
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -531,17 +610,28 @@ const auth = getAuth(app);
 
 const IMGBB_KEY = "a6eae70b0be1c286fdc00bd22bed5193";
 const SUPPORT_EMAIL = "StarWebSupport@gmail.com";
+const VK_LINK = "https://vk.ru/club242256662";
 const ADMIN_EMAIL = "Lemon4ikzxc777@gmail.com";
 const ADMIN_ID = "0000AA";
 const ADMIN_NAME = "LoraSystem";
 const OLD_ADMIN_ID = "612888AGS";
 const START_DIGIT = 1111;
 const END_DIGIT = 9999;
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+const ICE_SERVERS = {
+  iceServers: [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' }
+  ]
+};
 
 const LETTER_PAIRS = [];
 for (let i = 0; i < 26; i++) LETTER_PAIRS.push(String.fromCharCode(65 + i) + 'A');
 for (let i = 1; i < 26; i++) LETTER_PAIRS.push('A' + String.fromCharCode(65 + i));
 for (let i = 1; i < 26; i++) LETTER_PAIRS.push(String.fromCharCode(65 + i) + String.fromCharCode(65 + i));
+
+const EMOJIS = ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','🥰','😍','🤩','😘','😗','😚','😙','😋','😛','😜','🤪','😝','🤗','🤔','🤨','😐','😑','😶','🙄','😏','😣','😥','😮','🤐','😯','😪','😫','🥱','😴','😌','😛','🤤','😒','😓','😔','😕','🙃','🤑','😲','☹️','🙁','😖','😞','😟','😤','😢','😭','😦','😧','😨','😩','🤯','😬','😰','😱','🥵','🥶','😳','🤪','😵','🥴','😠','😡','🤬','😷','🤒','🤕','🤢','🤮','🤧','😇','🥳','🥺','🤠','🤡','🤥','🤫','🤭','🧐','🤓','😈','👿','👹','👺','💀','☠️','👻','👽','👾','🤖','💩','😺','😸','😹','😻','😼','😽','🙀','😿','😾','❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💔','❣️','💕','💞','💓','💗','💖','💘','💝','👍','👎','👌','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','👇','☝️','✋','🤚','🖐','🖖','👋','🤝','🙏','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🧠','🦷','🦴','👀','👁','👅','👄','🔥','⭐','🌟','✨','⚡','☀️','🌤','⛅','🌥','☁️','🌦','🌧','⛈','🌩','🌨','❄️','☃️','⛄','🌬','💨','💧','💦','☔','☂️','🌊','🎉','🎊','🎈','🎁','🎂','🍰','🍕','🍔','🍟','🌭','🍿','🍩','🍪','🍫','🍬','🍭','🍮','☕','🍵','🍺','🍻','🥂','🍷','🥃','🍸','🍹'];
 
 async function uploadToImgBB(file) {
   const fd = new FormData();
@@ -552,16 +642,41 @@ async function uploadToImgBB(file) {
   return json.data.url;
 }
 
+async function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
 let currentUser = null;
 let currentUid = null;
 let usersCache = {};
 let chatsCache = {};
+let groupsCache = {};
 let postsCache = {};
 let activeChatId = null;
+let activeGroupId = null;
 let postPendingImage = null;
 let avatarPendingImage = null;
 let wallpaperPendingImage = null;
+let groupAvatarPendingImage = null;
 let unsubscribers = [];
+let mediaRecorder = null;
+let audioChunks = [];
+let recordingStart = 0;
+
+let pc = null;
+let localStream = null;
+let currentCallId = null;
+let currentCallPeer = null;
+let currentCallType = null;
+let isCaller = false;
+let callUnsub = null;
+let isMuted = false;
+let isCamOff = false;
 
 const THEMES = [
   { id:'dark', name:'Тёмная' }, { id:'light', name:'Светлая' },
@@ -587,7 +702,13 @@ function formatTime(ts) {
     return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
   return d.getDate().toString().padStart(2,'0') + '.' + (d.getMonth()+1).toString().padStart(2,'0');
 }
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' Б';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' КБ';
+  return (bytes/1024/1024).toFixed(2) + ' МБ';
+}
 function chatKey(a, b) { return [a, b].sort().join('_'); }
+function isGroupKey(k) { return k.startsWith('g_'); }
 
 function showToast(text, isError) {
   const t = document.getElementById('toast');
@@ -613,20 +734,44 @@ function closeImageViewer() {
   v.classList.remove('open');
   document.body.style.overflow = '';
 }
-window.addEventListener('popstate', () => closeImageViewer());
-window.addEventListener('keydown', e => { if (e.key === 'Escape') closeImageViewer(); });
+window.addEventListener('popstate', () => {
+  closeImageViewer();
+  if (window.innerWidth <= 768 && activeChatId) closeChat();
+});
+window.addEventListener('keydown', e => { if (e.key === 'Escape') { closeImageViewer(); closeModal(); } });
 
 function isAdmin() { return currentUser && (currentUser.id === ADMIN_ID || currentUser.role === 'admin'); }
 function isBlockedBy(otherId) {
   const other = usersCache[otherId];
   if (!other || !other.blocked) return false;
-  return other.blocked[currentUid] === true || other.blocked[currentUser.id] === true;
+  return other.blocked[currentUser.id] === true;
 }
 function iBlocked(otherId) {
   if (!currentUser.blocked) return false;
   const other = usersCache[otherId];
   if (!other) return false;
-  return currentUser.blocked[other.id] === true || currentUser.blocked[otherId] === true;
+  return currentUser.blocked[other.id] === true;
+}
+function isFrozenActive(u) {
+  if (!u) return false;
+  if (u.frozen === true) return true;
+  if (u.frozenUntil && u.frozenUntil > Date.now()) return true;
+  return false;
+}
+function isMutedActive(u) {
+  if (!u) return false;
+  if (u.muted === true) return true;
+  if (u.mutedUntil && u.mutedUntil > Date.now()) return true;
+  return false;
+}
+function formatDuration(ms) {
+  if (!ms || ms <= 0) return '0 мин';
+  const m = Math.floor(ms / 60000);
+  const h = Math.floor(m / 60);
+  const d = Math.floor(h / 24);
+  if (d > 0) return d + ' дн';
+  if (h > 0) return h + ' ч';
+  return m + ' мин';
 }
 
 function applyTheme(user) {
@@ -635,8 +780,16 @@ function applyTheme(user) {
   const accent = user.accent || '#4a9eff';
   root.setProperty('--accent', accent);
   root.setProperty('--accent-hover', shiftColor(accent, -15));
-  if (user.bubbleOut) root.setProperty('--bubble-out', user.bubbleOut);
-  if (user.bubbleIn) root.setProperty('--bubble-in', user.bubbleIn);
+  if (user.bubbleOut) {
+    root.setProperty('--bubble-out', user.bubbleOut);
+    root.setProperty('--bubble-out-text', contrastText(user.bubbleOut));
+  } else {
+    root.setProperty('--bubble-out-text', '#fff');
+  }
+  if (user.bubbleIn) {
+    root.setProperty('--bubble-in', user.bubbleIn);
+    root.setProperty('--bubble-in-text', contrastText(user.bubbleIn));
+  }
   if (user.font) {
     const f = FONTS.find(x => x.id === user.font);
     if (f) root.setProperty('--font', f.css);
@@ -654,52 +807,57 @@ function shiftColor(hex, amount) {
     return '#' + ((r<<16)|(g<<8)|b).toString(16).padStart(6,'0');
   } catch(e) { return hex; }
 }
+function contrastText(hex) {
+  try {
+    let c = hex.replace('#','');
+    if (c.length === 3) c = c.split('').map(x => x+x).join('');
+    const num = parseInt(c, 16);
+    const r = (num >> 16) & 0xff;
+    const g = (num >> 8) & 0xff;
+    const b = num & 0xff;
+    const lum = (0.299*r + 0.587*g + 0.114*b) / 255;
+    return lum > 0.6 ? '#1a2332' : '#ffffff';
+  } catch(e) { return '#ffffff'; }
+}
 
-/* ============================================================
-   СЧЁТЧИК ID
-   ============================================================ */
 async function getNextId() {
   const counterRef = ref(db, 'system/counter');
+  let reserved = null;
   const result = await runTransaction(counterRef, (current) => {
-    if (!current) return { digit: START_DIGIT + 1, letterIdx: 0 };
-    let { digit, letterIdx } = current;
-    digit++;
-    if (digit > END_DIGIT) {
-      digit = START_DIGIT;
-      letterIdx++;
-      if (letterIdx >= LETTER_PAIRS.length) throw new Error('ID закончились');
+    if (!current) {
+      reserved = { digit: START_DIGIT, letterIdx: 0 };
+      return { digit: START_DIGIT + 1, letterIdx: 0 };
     }
-    return { digit, letterIdx };
+    let { digit, letterIdx } = current;
+    if (digit > END_DIGIT || digit < START_DIGIT) digit = START_DIGIT;
+    if (letterIdx < 0 || letterIdx >= LETTER_PAIRS.length) letterIdx = 0;
+    reserved = { digit, letterIdx };
+    let nd = digit + 1, nl = letterIdx;
+    if (nd > END_DIGIT) { nd = START_DIGIT; nl++; }
+    if (nl >= LETTER_PAIRS.length) nl = 0;
+    return { digit: nd, letterIdx: nl };
   });
   if (!result.committed) throw new Error('Не удалось получить ID');
-  const prev = result.snapshot.val();
-  // Восстанавливаем предыдущее значение: если digit=START+1 и letterIdx=0 → был START,0
-  // Но проще: то, что вернула транзакция — это НОВОЕ состояние.
-  // А ID — это предыдущее. Считаем его из нового:
-  let d = prev.digit - 1, l = prev.letterIdx;
-  if (d < START_DIGIT) { d = END_DIGIT; l--; }
-  if (l < 0) l = 0;
-  let id = d + LETTER_PAIRS[l];
-  // Проверка коллизии
+  if (!reserved) {
+    const st = result.snapshot.val();
+    let d = st.digit - 1, l = st.letterIdx;
+    if (d < START_DIGIT) { d = END_DIGIT; l--; if (l < 0) l = LETTER_PAIRS.length - 1; }
+    reserved = { digit: d, letterIdx: l };
+  }
+  let d = reserved.digit, l = reserved.letterIdx;
   let attempts = 0;
-  while (attempts < 100) {
+  while (attempts < 200) {
+    const id = d + LETTER_PAIRS[l];
     const snap = await get(ref(db, 'users/' + id));
-    if (!snap.exists() && !(await get(ref(db, 'uids/' + id))).exists()) return { id, digit: d, letterIdx: l };
-    // Коллизия — двигаем дальше
+    if (!snap.exists()) return id;
     d++;
-    if (d > END_DIGIT) { d = START_DIGIT; l++; }
-    if (l >= LETTER_PAIRS.length) throw new Error('ID закончились');
-    id = d + LETTER_PAIRS[l];
-    // Записываем обновлённый счётчик
-    await set(counterRef, { digit: d + 1 > END_DIGIT ? START_DIGIT : d + 1, letterIdx: d + 1 > END_DIGIT ? l + 1 : l });
+    if (d > END_DIGIT) { d = START_DIGIT; l++; if (l >= LETTER_PAIRS.length) throw new Error('ID закончились'); }
+    await set(counterRef, { digit: d, letterIdx: l });
     attempts++;
   }
   throw new Error('Не удалось найти свободный ID');
 }
 
-/* ============================================================
-   АВТОРИЗАЦИЯ
-   ============================================================ */
 window.switchTab = function(tab) {
   const isLogin = tab === 'login';
   document.getElementById('tabLogin').classList.toggle('active', isLogin);
@@ -712,43 +870,29 @@ window.switchTab = function(tab) {
 
 async function ensureAdminExists() {
   try {
-    // Удаляем старого админа
     const oldSnap = await get(ref(db, 'users/' + OLD_ADMIN_ID));
-    if (oldSnap.exists()) {
-      await remove(ref(db, 'users/' + OLD_ADMIN_ID));
-      console.log('Старый админ удалён');
-    }
-    // Проверяем, есть ли админ по email
-    const emailSnap = await get(ref(db, 'email_to_id'));
-    const map = emailSnap.val() || {};
-    const adminEmail = ADMIN_EMAIL.toLowerCase();
-    if (map[adminEmail]) {
-      // Уже есть
+    if (oldSnap.exists()) await remove(ref(db, 'users/' + OLD_ADMIN_ID));
+    const emailSnap = await get(ref(db, 'email_to_id/' + ADMIN_EMAIL.toLowerCase()));
+    if (emailSnap.exists()) {
+      if (auth.currentUser) await signOut(auth);
       return;
     }
-    // Создаём аккаунт через Firebase Auth
-    let uid;
+    let uid = null;
     try {
       const cred = await createUserWithEmailAndPassword(auth, ADMIN_EMAIL, "612888AGS");
       uid = cred.user.uid;
       await sendEmailVerification(cred.user);
+      await signOut(auth);
     } catch(e) {
       if (e.code === 'auth/email-already-in-use') {
-        // Уже есть в Auth — вход
-        const cred = await signInWithEmailAndPassword(auth, ADMIN_EMAIL, "612888AGS");
-        uid = cred.user.uid;
-        await signOut(auth);
-      } else {
-        console.error('admin create:', e);
+        if (auth.currentUser) await signOut(auth);
         return;
       }
+      console.error('admin create:', e);
+      return;
     }
-    // Создаём профиль
     const profile = {
-      id: ADMIN_ID,
-      uid,
-      name: ADMIN_NAME,
-      email: ADMIN_EMAIL,
+      id: ADMIN_ID, uid, name: ADMIN_NAME, email: ADMIN_EMAIL,
       avatar: '', wallpaper: '',
       theme: 'dark', accent: '#4a9eff', font: 'system', fontSize: 15,
       blocked: {}, contacts: {},
@@ -757,12 +901,9 @@ async function ensureAdminExists() {
     };
     await set(ref(db, 'users/' + ADMIN_ID), profile);
     await set(ref(db, 'uids/' + uid), ADMIN_ID);
-    await set(ref(db, 'email_to_id/' + adminEmail), ADMIN_ID);
-    // Занимаем счётчик, чтобы 1111AA не выдался
+    await set(ref(db, 'email_to_id/' + ADMIN_EMAIL.toLowerCase()), ADMIN_ID);
     const cntSnap = await get(ref(db, 'system/counter'));
-    if (!cntSnap.exists()) {
-      await set(ref(db, 'system/counter'), { digit: START_DIGIT, letterIdx: 0 });
-    }
+    if (!cntSnap.exists()) await set(ref(db, 'system/counter'), { digit: START_DIGIT, letterIdx: 0 });
   } catch(e) { console.error('ensureAdmin:', e); }
 }
 
@@ -772,24 +913,19 @@ window.doRegister = async function() {
   const password = document.getElementById('regPassword').value;
   const msg = document.getElementById('regMsg');
   msg.className = 'msg error'; msg.textContent = '';
-
   if (!name) { msg.textContent = 'Введите имя'; return; }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Неверный email'; return; }
   if (password.length < 6) { msg.textContent = 'Пароль минимум 6 символов'; return; }
   if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) { msg.textContent = 'Этот email занят'; return; }
-
   const btn = document.getElementById('regBtn');
   btn.disabled = true; btn.textContent = 'Создание...';
   try {
-    // Проверка email в маппинге
     const emailSnap = await get(ref(db, 'email_to_id/' + email.toLowerCase()));
-    if (emailSnap.exists()) { msg.textContent = 'Этот email уже зарегистрирован'; btn.disabled = false; btn.textContent = 'Создать аккаунт'; return; }
-
+    if (emailSnap.exists()) { msg.textContent = 'Email уже зарегистрирован'; btn.disabled = false; btn.textContent = 'Создать аккаунт'; return; }
     const cred = await createUserWithEmailAndPassword(auth, email, password);
     const uid = cred.user.uid;
     await sendEmailVerification(cred.user);
-
-    const { id } = await getNextId();
+    const id = await getNextId();
     const user = {
       id, uid, name, email,
       avatar: '', wallpaper: '',
@@ -801,11 +937,9 @@ window.doRegister = async function() {
     await set(ref(db, 'users/' + id), user);
     await set(ref(db, 'uids/' + uid), id);
     await set(ref(db, 'email_to_id/' + email.toLowerCase()), id);
-
-    msg.className = 'msg success';
-    msg.innerHTML = `★ Аккаунт создан!<br>Ваш ID: <b>${id}</b><br><br>
-      Проверьте почту <b>${escapeHtml(email)}</b> — там письмо для подтверждения.`;
     await signOut(auth);
+    msg.className = 'msg success';
+    msg.innerHTML = `★ Аккаунт создан!<br>Ваш ID: <b>${id}</b><br><br>Проверьте почту <b>${escapeHtml(email)}</b>`;
     btn.disabled = false; btn.textContent = 'Создать аккаунт';
   } catch(e) {
     console.error(e);
@@ -823,35 +957,28 @@ window.doLogin = async function() {
   const msg = document.getElementById('loginMsg');
   msg.className = 'msg error'; msg.textContent = '';
   if (!email || !password) { msg.textContent = 'Заполните все поля'; return; }
-
   const btn = document.getElementById('loginBtn');
   btn.disabled = true; btn.textContent = 'Вход...';
   try {
     const cred = await signInWithEmailAndPassword(auth, email, password);
     if (!cred.user.emailVerified) {
       msg.className = 'msg info';
-      msg.innerHTML = '✉ Подтвердите email.<br>Письмо отправлено на ' + escapeHtml(email) +
+      msg.innerHTML = '✉ Подтвердите email.<br>Письмо на ' + escapeHtml(email) +
         '<br><br><a href="#" onclick="resendVerify();return false" style="color:var(--accent)">Отправить повторно</a>';
       await signOut(auth);
-      btn.disabled = false; btn.textContent = 'Войти';
-      return;
+      btn.disabled = false; btn.textContent = 'Войти'; return;
     }
     const uidSnap = await get(ref(db, 'uids/' + cred.user.uid));
-    if (!uidSnap.exists()) {
-      msg.textContent = 'Профиль не найден';
-      await signOut(auth);
-      btn.disabled = false; btn.textContent = 'Войти';
-      return;
-    }
+    if (!uidSnap.exists()) { msg.textContent = 'Профиль не найден'; await signOut(auth); btn.disabled = false; btn.textContent = 'Войти'; return; }
     const userId = uidSnap.val();
     const userSnap = await get(ref(db, 'users/' + userId));
     const user = userSnap.val();
     if (!user) { msg.textContent = 'Профиль не найден'; await signOut(auth); btn.disabled = false; btn.textContent = 'Войти'; return; }
-    if (user.frozen) {
-      msg.textContent = '🚫 Аккаунт заморожен администратором';
+    if (isFrozenActive(user)) {
+      const until = user.frozenUntil ? formatDuration(user.frozenUntil - Date.now()) : '';
+      msg.textContent = '🚫 Аккаунт заморожен' + (until ? ' (осталось ' + until + ')' : '');
       await signOut(auth);
-      btn.disabled = false; btn.textContent = 'Войти';
-      return;
+      btn.disabled = false; btn.textContent = 'Войти'; return;
     }
     currentUid = cred.user.uid;
     enterApp(user);
@@ -859,7 +986,7 @@ window.doLogin = async function() {
     console.error(e);
     if (e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential')
       msg.textContent = 'Неверный email или пароль';
-    else if (e.code === 'auth/too-many-requests') msg.textContent = 'Слишком много попыток. Подождите';
+    else if (e.code === 'auth/too-many-requests') msg.textContent = 'Слишком много попыток';
     else msg.textContent = 'Ошибка: ' + e.message;
     btn.disabled = false; btn.textContent = 'Войти';
   }
@@ -881,6 +1008,9 @@ window.resendVerify = async function() {
 window.logout = async function() {
   if (!confirm('Выйти из аккаунта?')) return;
   unsubscribers.forEach(u => u());
+  if (callUnsub) callUnsub();
+  if (pc) { try { pc.close(); } catch(e){} }
+  if (localStream) localStream.getTracks().forEach(t => t.stop());
   await signOut(auth);
   location.reload();
 };
@@ -892,20 +1022,21 @@ function enterApp(user) {
   document.getElementById('appScreen').classList.add('active');
   applyUserToHeader();
   if (isAdmin()) document.getElementById('adminBtn').style.display = '';
-
-  unsubscribers.forEach(u => u());
-  unsubscribers = [];
-
+  unsubscribers.forEach(u => u()); unsubscribers = [];
   unsubscribers.push(onValue(ref(db, 'users'), snap => {
     usersCache = snap.val() || {};
     const fresh = usersCache[currentUser.id];
     if (fresh) { currentUser = fresh; applyUserToHeader(); }
-    renderChats(); renderContacts(); renderPosts(); renderChat();
+    renderChats(); renderContacts(); renderPosts(); renderChat(); renderGroups();
     if (document.getElementById('searchInput').value) searchUser();
   }));
   unsubscribers.push(onValue(ref(db, 'chats'), snap => {
     chatsCache = snap.val() || {};
     renderChats(); renderChat(); markAllRead();
+  }));
+  unsubscribers.push(onValue(ref(db, 'groups'), snap => {
+    groupsCache = snap.val() || {};
+    renderChats(); renderGroups(); renderChat();
   }));
   unsubscribers.push(onValue(ref(db, 'posts'), snap => {
     postsCache = snap.val() || {};
@@ -915,6 +1046,7 @@ function enterApp(user) {
     const u = snap.val();
     if (u) { currentUser = u; applyTheme(u); applyUserToHeader(); }
   }));
+  startCallListener();
 }
 
 function applyUserToHeader() {
@@ -926,30 +1058,26 @@ function applyUserToHeader() {
   else { av.style.backgroundImage = ''; av.textContent = firstLetter(currentUser.name); }
 }
 
-/* ============================================================
-   ПОИСК
-   ============================================================ */
 window.searchUser = function() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const box = document.getElementById('searchResult');
   if (q.length < 1) { box.innerHTML = ''; return; }
   const results = Object.values(usersCache).filter(u => {
     if (u.id === currentUser.id) return false;
-    return u.id.toLowerCase().includes(q) || u.name.toLowerCase().includes(q) || (u.email && u.email.toLowerCase().includes(q));
+    return u.id.toLowerCase().includes(q)
+        || u.name.toLowerCase().includes(q)
+        || (u.email && u.email.toLowerCase().includes(q));
   }).slice(0, 20);
   if (results.length === 0) { box.innerHTML = '<div class="empty-hint" style="padding:10px 0">Никого не найдено</div>'; return; }
   box.innerHTML = results.map(u => {
     const avStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
     const avContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
     const inContacts = currentUser.contacts && currentUser.contacts[u.id];
-    const frozen = u.frozen ? ' <span style="color:#ff6b6b">❄</span>' : '';
-    return `
-      <div class="found-user" data-id="${u.id}">
+    const frozen = isFrozenActive(u) ? ' <span style="color:#ff6b6b">❄</span>' : '';
+    const muted = isMutedActive(u) ? ' <span style="color:#ffa726">🔇</span>' : '';
+    return `<div class="found-user" data-id="${u.id}">
         <div class="avatar"${avStyle}>${avContent}</div>
-        <div class="meta" data-open>
-          <div class="name">${escapeHtml(u.name)}${frozen}</div>
-          <div class="id">${u.id}</div>
-        </div>
+        <div class="meta" data-open><div class="name">${escapeHtml(u.name)}${frozen}${muted}</div><div class="id">${u.id}</div></div>
         <div class="actions">
           <button data-contact="${u.id}" title="${inContacts ? 'Убрать' : 'Добавить'}">${inContacts ? '★' : '☆'}</button>
           <button data-chat="${u.id}" title="Написать">💬</button>
@@ -965,19 +1093,15 @@ window.searchUser = function() {
 };
 
 window.switchSidebarTab = function(tab) {
-  ['chats','posts','contacts'].forEach(t => {
+  ['chats','groups','posts','contacts'].forEach(t => {
     document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle('active', t === tab);
     document.getElementById('content' + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle('hidden', t !== tab);
   });
 };
 
-/* ============================================================
-   КОНТАКТЫ
-   ============================================================ */
 window.toggleContact = async function(uid) {
   if (uid === currentUser.id) return;
-  const other = usersCache[uid];
-  if (!other) return;
+  const other = usersCache[uid]; if (!other) return;
   const contacts = currentUser.contacts || {};
   const path = `users/${currentUser.id}/contacts/${other.id}`;
   if (contacts[other.id]) { await remove(ref(db, path)); showToast('Удалён из контактов'); }
@@ -989,19 +1113,15 @@ function renderContacts() {
   if (!currentUser) return;
   const contacts = currentUser.contacts || {};
   const ids = Object.keys(contacts).filter(id => usersCache[id]);
-  if (ids.length === 0) { list.innerHTML = '<div class="empty-hint">Нет контактов.<br>Найдите человека через поиск и нажмите ☆.</div>'; return; }
+  if (ids.length === 0) { list.innerHTML = '<div class="empty-hint">Нет контактов.<br>Найдите через поиск и нажмите ☆.</div>'; return; }
   list.innerHTML = ids.map(uid => {
     const u = usersCache[uid];
     const avStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
     const avContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
-    const frozen = u.frozen ? ' ❄' : '';
-    return `
-      <div class="contact-item" data-id="${uid}">
+    const frozen = isFrozenActive(u) ? ' ❄' : '';
+    return `<div class="contact-item" data-id="${uid}">
         <div class="avatar"${avStyle}>${avContent}</div>
-        <div class="chat-info" data-open>
-          <div class="name">${escapeHtml(u.name)}${frozen}</div>
-          <div class="last">${u.id}</div>
-        </div>
+        <div class="chat-info" data-open><div class="name">${escapeHtml(u.name)}${frozen}</div><div class="last">${u.id}</div></div>
         <div class="actions">
           <button data-chat title="Написать">💬</button>
           <button class="danger" data-remove title="Удалить">✕</button>
@@ -1017,11 +1137,132 @@ function renderContacts() {
 }
 
 /* ============================================================
+   ГРУППЫ
+   ============================================================ */
+window.openCreateGroup = function() {
+  groupAvatarPendingImage = '';
+  const contacts = currentUser.contacts || {};
+  const ids = Object.keys(contacts).filter(id => usersCache[id]);
+  document.getElementById('modalContent').innerHTML = `
+    <h2>Создать группу</h2>
+    <div class="avatar-picker">
+      <div class="avatar" id="groupAvatarPreview">?</div>
+      <div class="btns"><button onclick="pickGroupAvatar()">Загрузить аватар</button></div>
+    </div>
+    <div class="field"><label>Название группы</label>
+      <input type="text" id="groupName" placeholder="Например: Друзья" maxlength="50"></div>
+    <div class="field"><label>Участники (из контактов)</label></div>
+    <div style="max-height:250px;overflow-y:auto;border:1px solid var(--border);border-radius:10px;padding:8px">
+      ${ids.length === 0 ? '<div class="empty-hint" style="padding:20px">Добавьте контакты сначала</div>' :
+        ids.map(id => {
+          const u = usersCache[id];
+          const avStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
+          const avContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
+          return `<label style="display:flex;align-items:center;gap:8px;padding:6px;cursor:pointer">
+            <input type="checkbox" data-uid="${id}" style="width:auto">
+            <div class="avatar"${avStyle} style="width:28px;height:28px;font-size:11px">${avContent}</div>
+            <span style="font-size:13px">${escapeHtml(u.name)}</span>
+          </label>`;
+        }).join('')}
+    </div>
+    <div class="close-row">
+      <button class="cancel" onclick="closeModal()">Отмена</button>
+      <button class="save" onclick="createGroup()">Создать</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+};
+window.pickGroupAvatar = function() { document.getElementById('fileInputGroupAvatar').click(); };
+document.getElementById('fileInputGroupAvatar').addEventListener('change', async (e) => {
+  const f = e.target.files[0]; if (!f) return; e.target.value = '';
+  showLoading(true, 'Загрузка...');
+  try {
+    const url = await uploadToImgBB(f);
+    groupAvatarPendingImage = url;
+    const prev = document.getElementById('groupAvatarPreview');
+    if (prev) { prev.style.backgroundImage = `url('${url}')`; prev.textContent = ''; }
+  } catch(err) { showToast('Ошибка: ' + err.message, true); }
+  finally { showLoading(false); }
+});
+window.createGroup = async function() {
+  const name = document.getElementById('groupName').value.trim();
+  if (!name) { showToast('Введите название', true); return; }
+  const checkboxes = document.querySelectorAll('#modalContent input[type="checkbox"]');
+  const members = { [currentUser.id]: 'admin' };
+  checkboxes.forEach(cb => { if (cb.checked) members[cb.dataset.uid] = 'member'; });
+  if (Object.keys(members).length < 2) { showToast('Добавьте хотя бы одного участника', true); return; }
+  showLoading(true, 'Создание группы...');
+  try {
+    const gid = 'g_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+    const group = {
+      id: gid, name,
+      avatar: groupAvatarPendingImage || '',
+      createdBy: currentUser.id,
+      createdAt: Date.now(),
+      members
+    };
+    await set(ref(db, 'groups/' + gid), group);
+    closeModal();
+    showToast('Группа создана');
+    switchSidebarTab('groups');
+  } catch(e) { showToast('Ошибка: ' + e.message, true); }
+  finally { showLoading(false); }
+};
+
+function renderGroups() {
+  const list = document.getElementById('groupsList');
+  if (!list || !currentUser) return;
+  const myGroups = Object.values(groupsCache).filter(g => g.members && g.members[currentUser.id]);
+  if (myGroups.length === 0) { list.innerHTML = '<div class="empty-hint">Нет групп.<br>Создайте первую!</div>'; return; }
+  myGroups.sort((a,b) => (b.lastMessage?.time || b.createdAt) - (a.lastMessage?.time || a.createdAt));
+  list.innerHTML = myGroups.map(g => {
+    const avStyle = g.avatar ? ` style="background-image:url('${g.avatar}')"` : '';
+    const avContent = g.avatar ? '' : escapeHtml(firstLetter(g.name));
+    const memberCount = Object.keys(g.members || {}).length;
+    const last = g.lastMessage;
+    const timeStr = last ? formatTime(last.time) : '';
+    const preview = last ? escapeHtml(last.text || (last.image ? '🖼' : '')) : 'Нет сообщений';
+    return `<div class="chat-item" data-gid="${g.id}">
+        <div class="avatar"${avStyle}>${avContent}</div>
+        <div class="chat-info">
+          <div class="top"><span class="name">${escapeHtml(g.name)}</span><span class="time">${timeStr}</span></div>
+          <div class="last">${memberCount} участн. · ${preview}</div>
+        </div>
+      </div>`;
+  }).join('');
+  list.querySelectorAll('.chat-item').forEach(el => el.addEventListener('click', () => openGroup(el.dataset.gid)));
+}
+
+window.openGroup = function(gid) {
+  const g = groupsCache[gid];
+  if (!g || !g.members[currentUser.id]) { showToast('Нет доступа', true); return; }
+  activeGroupId = gid;
+  activeChatId = null;
+  document.getElementById('chatArea').classList.add('open');
+  renderChats(); renderChat();
+  markGroupRead();
+};
+
+function markGroupRead() {
+  if (!activeGroupId || !currentUser) return;
+  const g = groupsCache[activeGroupId];
+  if (!g || !g.messages) return;
+  const updates = {}; let changed = false;
+  Object.entries(g.messages).forEach(([mid, m]) => {
+    if (m.from !== currentUser.id && (!m.readBy || !m.readBy[currentUser.id])) {
+      updates[`groups/${activeGroupId}/messages/${mid}/readBy/${currentUser.id}`] = true;
+      changed = true;
+    }
+  });
+  if (changed) update(ref(db), updates);
+}
+
+/* ============================================================
    ЧАТЫ
    ============================================================ */
 window.openChat = function(otherId) {
-  if (isBlockedBy(otherId) && !isAdmin()) { showToast('Вы не можете писать этому пользователю', true); return; }
+  if (isBlockedBy(otherId) && !isAdmin()) { showToast('Нельзя писать этому пользователю', true); return; }
   activeChatId = otherId;
+  activeGroupId = null;
   document.getElementById('searchInput').value = '';
   document.getElementById('searchResult').innerHTML = '';
   document.getElementById('chatArea').classList.add('open');
@@ -1029,21 +1270,21 @@ window.openChat = function(otherId) {
 };
 window.closeChat = function() {
   document.getElementById('chatArea').classList.remove('open');
-  activeChatId = null; renderChat(); renderChats();
+  activeChatId = null;
+  activeGroupId = null;
+  renderChat(); renderChats();
 };
 function markAllRead() {
   if (!activeChatId || !currentUser) return;
   const key = chatKey(currentUser.id, activeChatId);
-  const msgs = chatsCache[key];
-  if (!msgs) return;
+  const msgs = chatsCache[key]; if (!msgs) return;
   const updates = {}; let changed = false;
   Object.entries(msgs).forEach(([mid, m]) => { if (m.from === activeChatId && !m.read) { updates[`chats/${key}/${mid}/read`] = true; changed = true; } });
   if (changed) update(ref(db), updates);
 }
 window.toggleBlockUser = async function() {
   if (!activeChatId) return;
-  const other = usersCache[activeChatId];
-  if (!other) return;
+  const other = usersCache[activeChatId]; if (!other) return;
   const blocked = iBlocked(activeChatId);
   if (blocked) { await remove(ref(db, `users/${currentUser.id}/blocked/${other.id}`)); showToast('Разблокирован'); }
   else {
@@ -1075,11 +1316,10 @@ function renderChats() {
     return { pid, last, time: last ? last.time : 0, unread };
   }).sort((a,b) => b.time - a.time);
   list.innerHTML = arr.map(({ pid, last, unread }) => {
-    const u = usersCache[pid];
-    if (!u) return '';
+    const u = usersCache[pid]; if (!u) return '';
     let preview = 'Нет сообщений'; let checkMark = '';
     if (last) {
-      let body = last.deleted ? 'Сообщение удалено' : (last.text || (last.image ? '🖼 Картинка' : ''));
+      let body = last.deleted ? 'Сообщение удалено' : (last.text || (last.image ? '🖼' : '') || (last.audio ? '🎤' : '') || (last.file ? '📎' : ''));
       if (last.from === myId) checkMark = last.read ? '<span class="check">✓✓</span>' : '<span class="check">✓</span>';
       preview = escapeHtml(body);
     }
@@ -1087,15 +1327,11 @@ function renderChats() {
     const avStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
     const avContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
     const blockedIcon = iBlocked(pid) ? ' 🚫' : '';
-    const frozenIcon = u.frozen ? ' ❄' : '';
-    return `
-      <div class="chat-item ${activeChatId === pid ? 'active' : ''}" data-id="${pid}">
+    const frozenIcon = isFrozenActive(u) ? ' ❄' : '';
+    return `<div class="chat-item ${activeChatId === pid ? 'active' : ''}" data-id="${pid}">
         <div class="avatar"${avStyle}>${avContent}</div>
         <div class="chat-info">
-          <div class="top">
-            <span class="name">${escapeHtml(u.name)}${frozenIcon}${blockedIcon}</span>
-            <span class="time">${timeStr}</span>
-          </div>
+          <div class="top"><span class="name">${escapeHtml(u.name)}${frozenIcon}${blockedIcon}</span><span class="time">${timeStr}</span></div>
           <div class="last">${checkMark}${preview}</div>
         </div>
         ${unread ? `<span class="unread-badge">${unread}</span>` : ''}
@@ -1111,40 +1347,45 @@ function renderChat() {
   const inputBar = document.getElementById('inputBar');
   const banner = document.getElementById('blockedBanner');
   const blockBtn = document.getElementById('blockBtn');
-  if (!activeChatId || !currentUser) {
+  if ((!activeChatId && !activeGroupId) || !currentUser) {
     noChat.style.display = 'flex';
     header.style.display = 'none'; messages.style.display = 'none';
     inputBar.style.display = 'none'; banner.classList.remove('show');
     return;
   }
-  const u = usersCache[activeChatId];
-  if (!u) { activeChatId = null; renderChat(); return; }
+  const isGroup = !!activeGroupId;
+  const u = isGroup ? groupsCache[activeGroupId] : usersCache[activeChatId];
+  if (!u) { activeChatId = null; activeGroupId = null; renderChat(); return; }
   noChat.style.display = 'none';
   header.style.display = 'flex'; messages.style.display = 'flex';
-  const blocked = iBlocked(activeChatId);
-  const blockedByThem = isBlockedBy(activeChatId);
+  const blocked = !isGroup && iBlocked(activeChatId);
+  const blockedByThem = !isGroup && isBlockedBy(activeChatId);
   banner.classList.toggle('show', blocked);
-  inputBar.style.display = (blocked || blockedByThem) ? 'none' : 'flex';
+  let canWrite = !blocked && !blockedByThem;
+  if (!isGroup && isMutedActive(currentUser)) { canWrite = false; }
+  inputBar.style.display = canWrite ? 'flex' : 'none';
+  blockBtn.style.display = isGroup ? 'none' : '';
   blockBtn.textContent = blocked ? '✅' : '🚫';
+  document.getElementById('audioCallBtn').style.display = isGroup ? 'none' : '';
+  document.getElementById('videoCallBtn').style.display = isGroup ? 'none' : '';
   const chatAv = document.getElementById('chatAvatar');
   if (u.avatar) { chatAv.style.backgroundImage = `url('${u.avatar}')`; chatAv.textContent = ''; }
   else { chatAv.style.backgroundImage = ''; chatAv.textContent = firstLetter(u.name); }
-  document.getElementById('chatName').textContent = u.name + (u.frozen ? ' ❄' : '');
-  document.getElementById('chatId').textContent = u.id;
-  if (currentUser.wallpaper) {
+  document.getElementById('chatName').textContent = u.name + (!isGroup && isFrozenActive(u) ? ' ❄' : '');
+  document.getElementById('chatId').textContent = isGroup ? (Object.keys(u.members || {}).length + ' участн.') : u.id;
+  if (currentUser.wallpaper && !isGroup) {
     messages.style.backgroundImage = `linear-gradient(rgba(15,20,25,0.75), rgba(15,20,25,0.75)), url('${currentUser.wallpaper}')`;
   } else messages.style.backgroundImage = '';
-  const key = chatKey(currentUser.id, activeChatId);
-  const msgsObj = chatsCache[key] || {};
+  const msgsObj = isGroup ? (u.messages || {}) : (chatsCache[chatKey(currentUser.id, activeChatId)] || {});
   const msgs = Object.entries(msgsObj).map(([id, m]) => ({ id, ...m })).sort((a,b) => a.time - b.time);
-  messages.innerHTML = msgs.map(m => renderMessage(m)).join('');
+  messages.innerHTML = msgs.map(m => renderMessage(m, isGroup)).join('');
   messages.scrollTop = messages.scrollHeight;
   messages.querySelectorAll('[data-action]').forEach(el => {
     el.addEventListener('click', e => {
       e.stopPropagation();
       const mid = el.dataset.mid;
-      if (el.dataset.action === 'edit') startEditMessage(mid);
-      if (el.dataset.action === 'delete') deleteMessage(mid);
+      if (el.dataset.action === 'edit') startEditMessage(mid, isGroup);
+      if (el.dataset.action === 'delete') deleteMessage(mid, isGroup);
     });
   });
   messages.querySelectorAll('.msg-bubble img.chat-image').forEach(img => img.addEventListener('click', () => openImageViewer(img.src)));
@@ -1158,7 +1399,7 @@ function renderChat() {
   });
 }
 
-function renderMessage(m) {
+function renderMessage(m, isGroup) {
   const isOut = m.from === currentUser.id;
   const dir = isOut ? 'out' : 'in';
   const deletedClass = m.deleted ? 'deleted' : '';
@@ -1166,17 +1407,22 @@ function renderMessage(m) {
   let contentHtml = '';
   if (m.deleted) contentHtml = '<em>Сообщение удалено</em>';
   else {
+    if (isGroup && !isOut) {
+      const sender = usersCache[m.from];
+      contentHtml += `<div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px">${escapeHtml(sender?.name || m.from)}</div>`;
+    }
     if (m.image) contentHtml += `<img class="chat-image" src="${m.image}" alt="">`;
+    if (m.audio) contentHtml += `<audio class="chat-audio" controls src="${m.audio}"></audio>`;
+    if (m.file) contentHtml += `<a class="file-link" href="${m.file.data}" download="${escapeHtml(m.file.name)}"><span class="file-icon">📄</span><span class="file-name">${escapeHtml(m.file.name)}<br><span style="opacity:0.7;font-size:11px">${formatSize(m.file.size)}</span></span></a>`;
     if (m.text) contentHtml += `<div>${escapeHtml(m.text)}</div>`;
   }
-  const checkHtml = isOut ? `<span>${m.read ? '✓✓' : '✓'}</span>` : '';
-  const actions = (!m.deleted && isOut) ? `
-    <div class="msg-actions">
-      ${m.text ? `<button data-action="edit" data-mid="${m.id}" title="Изменить">✏</button>` : ''}
+  const checkHtml = (isOut && !isGroup) ? `<span>${m.read ? '✓✓' : '✓'}</span>` : '';
+  const canEdit = !m.deleted && isOut && m.text && !m.image && !m.audio && !m.file;
+  const actions = (!m.deleted && isOut) ? `<div class="msg-actions">
+      ${canEdit ? `<button data-action="edit" data-mid="${m.id}" title="Изменить">✏</button>` : ''}
       <button data-action="delete" data-mid="${m.id}" class="danger" title="Удалить">🗑</button>
     </div>` : '';
-  return `
-    <div class="msg-wrap ${dir}">
+  return `<div class="msg-wrap ${dir}">
       ${actions}
       <div class="msg-bubble ${dir} ${deletedClass} ${editedClass}">
         ${contentHtml}
@@ -1188,9 +1434,25 @@ function renderMessage(m) {
 window.sendMessage = async function() {
   const input = document.getElementById('messageInput');
   const text = input.value.trim();
-  if (!text || !activeChatId || !currentUser) return;
+  if (!text || (!activeChatId && !activeGroupId) || !currentUser) return;
+  if (isMutedActive(currentUser)) { showToast('Вы в муте', true); return; }
+  if (activeGroupId) {
+    const g = groupsCache[activeGroupId];
+    if (!g) return;
+    const mid = push(ref(db, `groups/${activeGroupId}/messages`)).key;
+    input.value = '';
+    const updateData = {};
+    updateData[`groups/${activeGroupId}/messages/${mid}`] = {
+      from: currentUser.id, text, time: Date.now(),
+      readBy: { [currentUser.id]: true }
+    };
+    updateData[`groups/${activeGroupId}/lastMessage`] = { text, time: Date.now(), from: currentUser.id };
+    try { await update(ref(db), updateData); }
+    catch(e) { showToast('Ошибка: ' + e.message, true); }
+    return;
+  }
   if (iBlocked(activeChatId)) { showToast('Вы заблокировали пользователя', true); return; }
-  if (isBlockedBy(activeChatId)) { showToast('Вы не можете писать этому пользователю', true); return; }
+  if (isBlockedBy(activeChatId)) { showToast('Нельзя писать', true); return; }
   const key = chatKey(currentUser.id, activeChatId);
   const newRef = push(ref(db, `chats/${key}`));
   input.value = '';
@@ -1198,19 +1460,15 @@ window.sendMessage = async function() {
   catch(e) { showToast('Ошибка: ' + e.message, true); }
 };
 
-function startEditMessage(mid) {
+function startEditMessage(mid, isGroup) {
+  if (isGroup) return;
   const key = chatKey(currentUser.id, activeChatId);
   const m = chatsCache[key]?.[mid];
   if (!m || m.from !== currentUser.id || m.deleted) return;
   const wrap = document.getElementById('messages').querySelector(`[data-mid="${mid}"]`)?.closest('.msg-wrap');
   if (!wrap) return;
   const bubble = wrap.querySelector('.msg-bubble');
-  bubble.innerHTML = `
-    <div class="edit-box">
-      <input type="text" value="${escapeHtml(m.text)}" id="editInput">
-      <button class="ok" data-save>ОК</button>
-      <button data-cancel>✕</button>
-    </div>`;
+  bubble.innerHTML = `<div class="edit-box"><input type="text" value="${escapeHtml(m.text)}" id="editInput"><button class="ok" data-save>ОК</button><button data-cancel>✕</button></div>`;
   const inp = document.getElementById('editInput');
   inp.focus(); inp.select();
   inp.addEventListener('keydown', e => { if (e.key === 'Enter') saveEdit(mid, inp.value.trim()); if (e.key === 'Escape') renderChat(); });
@@ -1222,34 +1480,292 @@ async function saveEdit(mid, newText) {
   const key = chatKey(currentUser.id, activeChatId);
   await update(ref(db, `chats/${key}/${mid}`), { text: newText, edited: true });
 }
-async function deleteMessage(mid) {
-  const key = chatKey(currentUser.id, activeChatId);
-  const m = chatsCache[key]?.[mid];
-  if (!m || m.from !== currentUser.id) return;
+async function deleteMessage(mid, isGroup) {
+  const path = isGroup ? `groups/${activeGroupId}/messages/${mid}` : `chats/${chatKey(currentUser.id, activeChatId)}/${mid}`;
+  const m = isGroup ? groupsCache[activeGroupId]?.messages?.[mid] : chatsCache[chatKey(currentUser.id, activeChatId)]?.[mid];
+  if (!m) return;
+  if (m.from !== currentUser.id && !isAdmin()) return;
   if (!confirm('Удалить сообщение?')) return;
-  await update(ref(db, `chats/${key}/${mid}`), { deleted: true, text: '', image: '' });
+  await update(ref(db, path), { deleted: true, text: '', image: '', audio: '', file: null });
 }
 
 /* Вложения */
 window.pickAttachment = function() { document.getElementById('fileInputMsg').click(); };
+window.pickFile = function() { document.getElementById('fileInputFile').click(); };
+
 document.getElementById('fileInputMsg').addEventListener('change', async (e) => {
-  const f = e.target.files[0];
-  if (!f || !activeChatId) return;
+  const f = e.target.files[0]; if (!f || (!activeChatId && !activeGroupId)) return;
   e.target.value = '';
-  if (iBlocked(activeChatId) || isBlockedBy(activeChatId)) { showToast('Нельзя отправить', true); return; }
+  if (isMutedActive(currentUser)) { showToast('Вы в муте', true); return; }
   showLoading(true, 'Загрузка картинки...');
   try {
     const url = await uploadToImgBB(f);
-    const key = chatKey(currentUser.id, activeChatId);
-    const newRef = push(ref(db, `chats/${key}`));
-    await set(newRef, { from: currentUser.id, text: '', image: url, time: Date.now(), read: false });
+    await sendToActive({ image: url });
   } catch(err) { showToast('Ошибка: ' + err.message, true); }
   finally { showLoading(false); }
 });
 
-/* ============================================================
-   ПРОФИЛЬ
-   ============================================================ */
+document.getElementById('fileInputFile').addEventListener('change', async (e) => {
+  const f = e.target.files[0]; if (!f || (!activeChatId && !activeGroupId)) return;
+  e.target.value = '';
+  if (isMutedActive(currentUser)) { showToast('Вы в муте', true); return; }
+  if (f.size > MAX_FILE_SIZE) { showToast('Файл больше ' + formatSize(MAX_FILE_SIZE), true); return; }
+  showLoading(true, 'Загрузка файла...');
+  try {
+    const data = await fileToBase64(f);
+    await sendToActive({ file: { name: f.name, size: f.size, type: f.type, data } });
+  } catch(err) { showToast('Ошибка: ' + err.message, true); }
+  finally { showLoading(false); }
+});
+
+async function sendToActive(content) {
+  const payload = { from: currentUser.id, text: '', time: Date.now(), read: false, ...content };
+  if (activeGroupId) {
+    const mid = push(ref(db, `groups/${activeGroupId}/messages`)).key;
+    payload.readBy = { [currentUser.id]: true };
+    const updates = {};
+    updates[`groups/${activeGroupId}/messages/${mid}`] = payload;
+    updates[`groups/${activeGroupId}/lastMessage`] = { text: content.image ? '🖼' : content.file ? '📎' : content.audio ? '🎤' : '', time: payload.time, from: currentUser.id };
+    await update(ref(db), updates);
+    return;
+  }
+  if (iBlocked(activeChatId) || isBlockedBy(activeChatId)) { showToast('Нельзя отправить', true); return; }
+  const key = chatKey(currentUser.id, activeChatId);
+  const newRef = push(ref(db, `chats/${key}`));
+  await set(newRef, payload);
+}
+
+/* Голосовые */
+window.toggleVoiceRecord = async function() {
+  if (mediaRecorder && mediaRecorder.state === 'recording') { stopVoiceRecord(); return; }
+  if (isMutedActive(currentUser)) { showToast('Вы в муте', true); return; }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    audioChunks = [];
+    recordingStart = Date.now();
+    mediaRecorder = new MediaRecorder(stream, { mimeType: MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4' });
+    mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+    mediaRecorder.onstop = async () => {
+      stream.getTracks().forEach(t => t.stop());
+      const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+      document.getElementById('voiceBtn').classList.remove('rec');
+      if (blob.size < 1000) { showToast('Слишком короткая запись', true); return; }
+      const duration = Date.now() - recordingStart;
+      showLoading(true, 'Отправка голосового...');
+      try {
+        const file = new File([blob], 'voice.webm', { type: blob.type });
+        const url = await uploadToImgBB(file);
+        await sendToActive({ audio: url, duration });
+      } catch(err) { showToast('Ошибка: ' + err.message, true); }
+      finally { showLoading(false); }
+    };
+    mediaRecorder.start();
+    document.getElementById('voiceBtn').classList.add('rec');
+    showToast('🔴 Запись... Нажмите 🎤 ещё раз, чтобы остановить');
+  } catch(e) { showToast('Нет доступа к микрофону', true); }
+};
+function stopVoiceRecord() {
+  if (mediaRecorder && mediaRecorder.state === 'recording') mediaRecorder.stop();
+}
+
+/* Эмодзи */
+window.toggleEmoji = function() {
+  const panel = document.getElementById('emojiPanel');
+  if (panel.classList.contains('open')) { panel.classList.remove('open'); return; }
+  const grid = document.getElementById('emojiGrid');
+  if (grid.children.length === 0) {
+    grid.innerHTML = EMOJIS.map(e => `<button type="button">${e}</button>`).join('');
+    grid.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      const inp = document.getElementById('messageInput');
+      inp.value += b.textContent;
+      inp.focus();
+    }));
+  }
+  panel.classList.add('open');
+};
+
+/* Звонки */
+function startCallListener() {
+  if (callUnsub) callUnsub();
+  callUnsub = onValue(ref(db, 'calls'), snap => {
+    const calls = snap.val() || {};
+    for (const [cid, c] of Object.entries(calls)) {
+      if (c.to === currentUser.id && c.status === 'ringing' && !currentCallId) {
+        currentCallId = cid;
+        currentCallPeer = c.from;
+        currentCallType = c.type;
+        isCaller = false;
+        const peer = usersCache[c.from];
+        document.getElementById('incomingWho').textContent = peer?.name || c.from;
+        document.getElementById('incomingType').textContent = c.type === 'video' ? '📹 Видеозвонок' : '📞 Аудиозвонок';
+        document.getElementById('incomingCall').classList.add('open');
+        break;
+      }
+    }
+  });
+}
+
+window.startAudioCall = () => startCall('audio');
+window.startVideoCall = () => startCall('video');
+
+async function startCall(type) {
+  if (!activeChatId) return;
+  const other = usersCache[activeChatId];
+  if (!other) return;
+  if (isBlockedBy(activeChatId)) { showToast('Нельзя позвонить', true); return; }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: type === 'video' ? { width: 640, height: 480 } : false
+    });
+    localStream = stream;
+    isCaller = true;
+    currentCallPeer = activeChatId;
+    currentCallType = type;
+    const cid = push(ref(db, 'calls')).key;
+    currentCallId = cid;
+    await set(ref(db, 'calls/' + cid), {
+      from: currentUser.id,
+      to: activeChatId,
+      type,
+      status: 'ringing',
+      createdAt: Date.now(),
+      offer: null,
+      answer: null
+    });
+    showCallUI(other.name, type);
+    document.getElementById('localVideo').srcObject = stream;
+    setupPeerConnection(true);
+    watchCall(cid);
+  } catch(e) {
+    showToast('Нет доступа к камере/микрофону: ' + e.message, true);
+  }
+}
+
+function showCallUI(name, type) {
+  document.getElementById('callOverlay').classList.add('open');
+  document.getElementById('callName').textContent = name;
+  document.getElementById('callStatus').textContent = 'Соединение...';
+  document.getElementById('camBtn').style.display = type === 'video' ? '' : 'none';
+}
+
+function setupPeerConnection(initiator) {
+  if (pc) { try { pc.close(); } catch(e){} }
+  pc = new RTCPeerConnection(ICE_SERVERS);
+  if (localStream) localStream.getTracks().forEach(t => pc.addTrack(t, localStream));
+  pc.onicecandidate = (e) => {
+    if (e.candidate && currentCallId) {
+      update(ref(db, `calls/${currentCallId}/candidates/${currentUser.id}`), { [Date.now()]: e.candidate.toJSON() });
+    }
+  };
+  pc.ontrack = (e) => {
+    const remoteVideo = document.getElementById('remoteVideo');
+    if (remoteVideo.srcObject !== e.streams[0]) remoteVideo.srcObject = e.streams[0];
+    document.getElementById('callStatus').textContent = 'Соединено';
+  };
+  pc.onconnectionstatechange = () => {
+    if (pc.connectionState === 'disconnected' || pc.connectionState === 'failed') endCall(true);
+  };
+  if (initiator) {
+    pc.createOffer().then(offer => {
+      pc.setLocalDescription(offer);
+      update(ref(db, `calls/${currentCallId}`), { offer: { type: offer.type, sdp: offer.sdp } });
+    });
+  }
+}
+
+function watchCall(cid) {
+  const unsub = onValue(ref(db, `calls/${cid}`), async snap => {
+    const c = snap.val();
+    if (!c) { endCall(true); return; }
+    if (c.status === 'ended' || c.status === 'rejected') { endCall(true); return; }
+    if (!isCaller && c.offer && pc && !pc.currentRemoteDescription) {
+      await pc.setRemoteDescription(new RTCSessionDescription(c.offer));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      await update(ref(db, `calls/${cid}`), { answer: { type: answer.type, sdp: answer.sdp }, status: 'active' });
+    }
+    if (isCaller && c.answer && pc && !pc.currentRemoteDescription) {
+      await pc.setRemoteDescription(new RTCSessionDescription(c.answer));
+    }
+    if (c.candidates) {
+      for (const [uid, cands] of Object.entries(c.candidates)) {
+        if (uid === currentUser.id) continue;
+        for (const cand of Object.values(cands)) {
+          try { await pc.addIceCandidate(new RTCIceCandidate(cand)); } catch(e) {}
+        }
+      }
+    }
+  });
+  const oldUnsub = callUnsub;
+  callUnsub = () => { unsub(); if (oldUnsub) oldUnsub(); };
+}
+
+window.acceptCall = async function() {
+  document.getElementById('incomingCall').classList.remove('open');
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: currentCallType === 'video' ? { width: 640, height: 480 } : false
+    });
+    localStream = stream;
+    document.getElementById('localVideo').srcObject = stream;
+    showCallUI(usersCache[currentCallPeer]?.name || '—', currentCallType);
+    await update(ref(db, `calls/${currentCallId}`), { status: 'active' });
+    setupPeerConnection(false);
+    watchCall(currentCallId);
+  } catch(e) {
+    showToast('Ошибка: ' + e.message, true);
+    rejectCall();
+  }
+};
+window.rejectCall = async function() {
+  document.getElementById('incomingCall').classList.remove('open');
+  if (currentCallId) await update(ref(db, `calls/${currentCallId}`), { status: 'rejected' });
+  cleanupCall();
+};
+window.endCall = async function(silent) {
+  if (currentCallId && !silent) {
+    try { await update(ref(db, `calls/${currentCallId}`), { status: 'ended' }); } catch(e) {}
+  }
+  cleanupCall();
+};
+function cleanupCall() {
+  if (pc) { try { pc.close(); } catch(e){} pc = null; }
+  if (localStream) { localStream.getTracks().forEach(t => t.stop()); localStream = null; }
+  if (callUnsub) { callUnsub(); callUnsub = null; }
+  document.getElementById('callOverlay').classList.remove('open');
+  document.getElementById('incomingCall').classList.remove('open');
+  document.getElementById('remoteVideo').srcObject = null;
+  document.getElementById('localVideo').srcObject = null;
+  if (currentCallId) { try { remove(ref(db, 'calls/' + currentCallId)); } catch(e){} }
+  currentCallId = null;
+  currentCallPeer = null;
+  currentCallType = null;
+  isCaller = false;
+  isMuted = false;
+  isCamOff = false;
+  document.getElementById('muteBtn').classList.remove('active');
+  document.getElementById('camBtn').classList.remove('active');
+}
+window.toggleMute = function() {
+  if (!localStream) return;
+  isMuted = !isMuted;
+  localStream.getAudioTracks().forEach(t => t.enabled = !isMuted);
+  document.getElementById('muteBtn').classList.toggle('active', isMuted);
+};
+window.toggleCamera = function() {
+  if (!localStream) return;
+  isCamOff = !isCamOff;
+  localStream.getVideoTracks().forEach(t => t.enabled = !isCamOff);
+  document.getElementById('camBtn').classList.toggle('active', isCamOff);
+};
+window.toggleSpeaker = function() {
+  const btn = document.getElementById('speakerBtn');
+  btn.classList.toggle('active');
+};
+
+/* Профиль */
 window.openProfileSettings = function() {
   avatarPendingImage = currentUser.avatar || '';
   wallpaperPendingImage = currentUser.wallpaper || '';
@@ -1259,70 +1775,53 @@ window.openProfileSettings = function() {
   const ct = currentUser.theme || 'dark';
   const ca = currentUser.accent || '#4a9eff';
   const cf = currentUser.font || 'system';
+  const muted = isMutedActive(currentUser);
   document.getElementById('modalContent').innerHTML = `
     <h2>Настройки</h2>
-    <div class="settings-section">
-      <h3>Аватар</h3>
+    ${muted ? `<div style="background:var(--danger);color:#fff;padding:10px;border-radius:8px;margin-bottom:14px;font-size:13px;text-align:center">🔇 Вы в муте</div>` : ''}
+    <div class="settings-section"><h3>Аватар</h3>
       <div class="avatar-picker">${av}
-        <div class="btns">
-          <button onclick="pickAvatarImage()">Загрузить</button>
-          <button onclick="removeAvatar()">Удалить</button>
-        </div>
+        <div class="btns"><button onclick="pickAvatarImage()">Загрузить</button><button onclick="removeAvatar()">Удалить</button></div>
       </div>
     </div>
-    <div class="settings-section">
-      <h3>Данные</h3>
+    <div class="settings-section"><h3>Данные</h3>
       <div class="field"><label>Имя</label><input type="text" id="setName" value="${escapeHtml(currentUser.name)}"></div>
       <div class="info-row"><span class="label">Email</span><span class="value">${escapeHtml(currentUser.email || '')}</span></div>
       <div class="info-row"><span class="label">Ваш ID</span><span class="value">${currentUser.id}</span></div>
     </div>
-    <div class="settings-section">
-      <h3>🎨 Тема оформления</h3>
-      <div class="theme-grid">
-        ${THEMES.map(t => `<div class="theme-option ${t.id === ct ? 'selected' : ''}" data-theme="${t.id}">${t.name}</div>`).join('')}
-      </div>
+    <div class="settings-section"><h3>🎨 Тема</h3>
+      <div class="theme-grid">${THEMES.map(t => `<div class="theme-option ${t.id === ct ? 'selected' : ''}" data-theme="${t.id}">${t.name}</div>`).join('')}</div>
     </div>
-    <div class="settings-section">
-      <h3>Акцентный цвет</h3>
-      <div class="color-grid">
-        ${ACCENTS.map(c => `<div class="color-swatch ${c.toLowerCase() === ca.toLowerCase() ? 'selected' : ''}" data-accent="${c}" style="background:${c}"></div>`).join('')}
-      </div>
+    <div class="settings-section"><h3>Акцентный цвет</h3>
+      <div class="color-grid">${ACCENTS.map(c => `<div class="color-swatch ${c.toLowerCase() === ca.toLowerCase() ? 'selected' : ''}" data-accent="${c}" style="background:${c}"></div>`).join('')}</div>
     </div>
-    <div class="settings-section">
-      <h3>Цвет моих сообщений</h3>
-      <div class="color-grid">
-        ${['#4a9eff','#4ade80','#a855f7','#ec4899','#ffa726','#06b6d4','#8b98a5','#1e2a38'].map(c => `<div class="color-swatch ${(currentUser.bubbleOut||'#4a9eff').toLowerCase()===c.toLowerCase()?'selected':''}" data-bubble="out" data-color="${c}" style="background:${c}"></div>`).join('')}
-      </div>
+    <div class="settings-section"><h3>Цвет моих сообщений</h3>
+      <div class="color-grid">${['#4a9eff','#4ade80','#a855f7','#ec4899','#ffa726','#06b6d4','#8b98a5','#1e2a38'].map(c => `<div class="color-swatch ${(currentUser.bubbleOut||'#4a9eff').toLowerCase()===c.toLowerCase()?'selected':''}" data-bubble="out" data-color="${c}" style="background:${c}"></div>`).join('')}</div>
     </div>
-    <div class="settings-section">
-      <h3>Цвет чужих сообщений</h3>
-      <div class="color-grid">
-        ${['#1e2a38','#2a3441','#3a4551','#4a9eff','#4ade80','#a855f7','#ec4899','#ffa726'].map(c => `<div class="color-swatch ${(currentUser.bubbleIn||'#1e2a38').toLowerCase()===c.toLowerCase()?'selected':''}" data-bubble="in" data-color="${c}" style="background:${c}"></div>`).join('')}
-      </div>
+    <div class="settings-section"><h3>Цвет чужих сообщений</h3>
+      <div class="color-grid">${['#1e2a38','#2a3441','#3a4551','#4a9eff','#4ade80','#a855f7','#ec4899','#ffa726'].map(c => `<div class="color-swatch ${(currentUser.bubbleIn||'#1e2a38').toLowerCase()===c.toLowerCase()?'selected':''}" data-bubble="in" data-color="${c}" style="background:${c}"></div>`).join('')}</div>
     </div>
-    <div class="settings-section">
-      <h3>Шрифт</h3>
-      <div class="font-options">
-        ${FONTS.map(f => `<button class="${f.id === cf ? 'selected' : ''}" data-font="${f.id}">${f.name}</button>`).join('')}
-      </div>
+    <div class="settings-section"><h3>Шрифт</h3>
+      <div class="font-options">${FONTS.map(f => `<button class="${f.id === cf ? 'selected' : ''}" data-font="${f.id}">${f.name}</button>`).join('')}</div>
       <div class="font-size-row" style="margin-top:10px">
         <span>Размер:</span>
         <input type="range" id="fontSize" min="12" max="20" value="${currentUser.fontSize || 15}" oninput="setFontSize(this.value)">
         <span id="fontSizeLabel">${currentUser.fontSize || 15}px</span>
       </div>
     </div>
-    <div class="settings-section">
-      <h3>Обои чата</h3>
+    <div class="settings-section"><h3>Обои чата</h3>
       <div class="field"><input type="text" id="setWallpaper" placeholder="https://..." value="${currentUser.wallpaper && !currentUser.wallpaper.startsWith('data:') ? escapeHtml(currentUser.wallpaper) : ''}"></div>
       <button class="btn secondary" onclick="pickWallpaperImage()">Загрузить картинку</button>
     </div>
-    <div class="settings-section">
-      <h3>Поддержка</h3>
-      <div class="info-row"><span class="label">Email</span><span class="value" style="font-size:13px">${SUPPORT_EMAIL}</span></div>
-      <p style="font-size:12px;color:var(--text-dim);margin-top:8px">Напишите нам, если нашли баг или есть предложение</p>
+    <div class="settings-section"><h3>Сообщество</h3>
+      <div class="info-row" style="cursor:pointer" onclick="window.open('${VK_LINK}','_blank')">
+        <span class="label">ВКонтакте</span><span class="value" style="color:var(--accent)">vk.ru/club242256662 →</span>
+      </div>
     </div>
-    <div class="settings-section">
-      <h3 style="color:var(--danger)">Опасная зона</h3>
+    <div class="settings-section"><h3>Поддержка</h3>
+      <div class="info-row"><span class="label">Email</span><span class="value" style="font-size:13px">${SUPPORT_EMAIL}</span></div>
+    </div>
+    <div class="settings-section"><h3 style="color:var(--danger)">Опасная зона</h3>
       <button class="btn danger" onclick="deleteAccount()">Удалить аккаунт навсегда</button>
     </div>
     <div class="close-row">
@@ -1330,28 +1829,15 @@ window.openProfileSettings = function() {
       <button class="save" onclick="saveProfile()">Сохранить</button>
     </div>`;
   document.getElementById('modalOverlay').classList.add('open');
-  document.querySelectorAll('[data-theme]').forEach(el => el.addEventListener('click', async () => {
-    await update(ref(db, 'users/' + currentUser.id), { theme: el.dataset.theme });
-    showToast('Тема применена');
-  }));
-  document.querySelectorAll('[data-accent]').forEach(el => el.addEventListener('click', async () => {
-    await update(ref(db, 'users/' + currentUser.id), { accent: el.dataset.accent });
-    showToast('Акцент изменён');
-  }));
+  document.querySelectorAll('[data-theme]').forEach(el => el.addEventListener('click', async () => { await update(ref(db, 'users/' + currentUser.id), { theme: el.dataset.theme }); showToast('Тема применена'); }));
+  document.querySelectorAll('[data-accent]').forEach(el => el.addEventListener('click', async () => { await update(ref(db, 'users/' + currentUser.id), { accent: el.dataset.accent }); showToast('Акцент изменён'); }));
   document.querySelectorAll('[data-bubble]').forEach(el => el.addEventListener('click', async () => {
     const patch = {}; patch[el.dataset.bubble === 'out' ? 'bubbleOut' : 'bubbleIn'] = el.dataset.color;
-    await update(ref(db, 'users/' + currentUser.id), patch);
-    showToast('Цвет изменён');
+    await update(ref(db, 'users/' + currentUser.id), patch); showToast('Цвет изменён');
   }));
-  document.querySelectorAll('[data-font]').forEach(el => el.addEventListener('click', async () => {
-    await update(ref(db, 'users/' + currentUser.id), { font: el.dataset.font });
-    showToast('Шрифт изменён');
-  }));
+  document.querySelectorAll('[data-font]').forEach(el => el.addEventListener('click', async () => { await update(ref(db, 'users/' + currentUser.id), { font: el.dataset.font }); showToast('Шрифт изменён'); }));
 };
-window.setFontSize = function(size) {
-  document.getElementById('fontSizeLabel').textContent = size + 'px';
-  update(ref(db, 'users/' + currentUser.id), { fontSize: parseInt(size) });
-};
+window.setFontSize = function(size) { document.getElementById('fontSizeLabel').textContent = size + 'px'; update(ref(db, 'users/' + currentUser.id), { fontSize: parseInt(size) }); };
 window.pickAvatarImage = function() { document.getElementById('fileInputAvatar').click(); };
 document.getElementById('fileInputAvatar').addEventListener('change', async (e) => {
   const f = e.target.files[0]; if (!f) return; e.target.value = '';
@@ -1376,8 +1862,7 @@ window.pickWallpaperImage = function() {
     showLoading(true, 'Загрузка обоев...');
     try {
       const url = await uploadToImgBB(f); wallpaperPendingImage = url;
-      document.getElementById('setWallpaper').value = url;
-      showToast('Обои загружены');
+      document.getElementById('setWallpaper').value = url; showToast('Обои загружены');
     } catch(err) { showToast('Ошибка: ' + err.message, true); }
     finally { showLoading(false); }
   });
@@ -1393,7 +1878,7 @@ window.saveProfile = async function() {
 };
 window.deleteAccount = async function() {
   if (isAdmin()) { showToast('Нельзя удалить аккаунт администратора', true); return; }
-  if (!confirm('⚠️ Удалить аккаунт навсегда?\nВсе данные будут стёрты.')) return;
+  if (!confirm('⚠️ Удалить аккаунт навсегда? Все данные будут стёрты.')) return;
   if (!confirm('Точно удалить? Необратимо.')) return;
   const myId = currentUser.id;
   showLoading(true, 'Удаление аккаунта...');
@@ -1404,6 +1889,9 @@ window.deleteAccount = async function() {
     Object.values(usersCache).forEach(u => {
       if (u.contacts && u.contacts[myId]) updates[`users/${u.id}/contacts/${myId}`] = null;
       if (u.blocked && u.blocked[myId]) updates[`users/${u.id}/blocked/${myId}`] = null;
+    });
+    Object.entries(groupsCache).forEach(([gid, g]) => {
+      if (g.members && g.members[myId]) updates[`groups/${gid}/members/${myId}`] = null;
     });
     updates['users/' + myId] = null;
     updates['uids/' + currentUid] = null;
@@ -1423,10 +1911,7 @@ window.openWallpaperSettings = function() {
       <input type="text" id="wpUrl" value="${currentUser.wallpaper && !currentUser.wallpaper.startsWith('data:') ? escapeHtml(currentUser.wallpaper) : ''}" placeholder="https://...">
     </div>
     <button class="btn secondary" onclick="pickWallpaperImage()">Загрузить картинку</button>
-    <div class="close-row">
-      <button class="cancel" onclick="closeModal()">Отмена</button>
-      <button class="save" onclick="applyWallpaper()">Применить</button>
-    </div>`;
+    <div class="close-row"><button class="cancel" onclick="closeModal()">Отмена</button><button class="save" onclick="applyWallpaper()">Применить</button></div>`;
   document.getElementById('modalOverlay').classList.add('open');
 };
 window.applyWallpaper = async function() {
@@ -1436,13 +1921,14 @@ window.applyWallpaper = async function() {
   closeModal(); showToast('Обои обновлены');
 };
 
-/* ============================================================
-   ПРОФИЛЬ ДРУГОГО
-   ============================================================ */
+window.openChatInfo = function() {
+  if (activeGroupId) { openGroupInfo(); return; }
+  if (activeChatId) openUserProfile(activeChatId);
+};
+
 window.openUserProfile = function(id) {
   if (!id) return;
-  const u = usersCache[id];
-  if (!u) return;
+  const u = usersCache[id]; if (!u) return;
   if (isBlockedBy(id) && !isAdmin()) { showToast('Профиль недоступен', true); return; }
   const avStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
   const avContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
@@ -1456,7 +1942,8 @@ window.openUserProfile = function(id) {
     </div>
     <div class="info-row"><span class="label">Имя</span><span class="value">${escapeHtml(u.name)}</span></div>
     <div class="info-row"><span class="label">ID</span><span class="value">${u.id}</span></div>
-    ${u.frozen ? '<div class="info-row"><span class="label" style="color:var(--danger)">Статус</span><span class="value" style="color:var(--danger)">❄ Заморожен</span></div>' : ''}
+    ${isFrozenActive(u) ? '<div class="info-row"><span class="label" style="color:var(--danger)">Статус</span><span class="value" style="color:var(--danger)">❄ Заморожен</span></div>' : ''}
+    ${isMutedActive(u) ? '<div class="info-row"><span class="label" style="color:#ffa726">Статус</span><span class="value" style="color:#ffa726">🔇 Мут</span></div>' : ''}
     ${u.role === 'admin' ? '<div class="info-row"><span class="label">Роль</span><span class="value" style="color:#ffa726">🛡 Админ</span></div>' : ''}
     <div class="info-row"><span class="label">В Star с</span><span class="value">${new Date(u.createdAt).toLocaleDateString()}</span></div>
     <div class="close-row" style="flex-wrap:wrap;gap:6px">
@@ -1477,9 +1964,99 @@ window.blockFromProfile = async function(id) {
   closeModal();
 };
 
-/* ============================================================
-   ПОСТЫ
-   ============================================================ */
+window.openGroupInfo = function() {
+  if (!activeGroupId) return;
+  const g = groupsCache[activeGroupId];
+  if (!g) return;
+  const isAdminOfGroup = g.members[currentUser.id] === 'admin';
+  const memberIds = Object.keys(g.members || {});
+  const avStyle = g.avatar ? ` style="background-image:url('${g.avatar}')"` : '';
+  const avContent = g.avatar ? '' : escapeHtml(firstLetter(g.name));
+  document.getElementById('modalContent').innerHTML = `
+    <h2>Группа</h2>
+    <div class="avatar-picker" style="justify-content:center">
+      <div class="avatar"${avStyle} style="width:80px;height:80px;font-size:28px">${avContent}</div>
+    </div>
+    <div class="info-row"><span class="label">Название</span><span class="value">${escapeHtml(g.name)}</span></div>
+    <div class="info-row"><span class="label">Создана</span><span class="value">${new Date(g.createdAt).toLocaleDateString()}</span></div>
+    <div class="settings-section" style="margin-top:20px">
+      <h3>Участники (${memberIds.length})</h3>
+      <div style="max-height:300px;overflow-y:auto">
+        ${memberIds.map(mid => {
+          const u = usersCache[mid]; if (!u) return '';
+          const isAdminM = g.members[mid] === 'admin';
+          const canRemove = isAdminOfGroup && mid !== currentUser.id;
+          const mAvStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
+          const mAvContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
+          return `<div class="group-member">
+            <div class="avatar"${mAvStyle}>${mAvContent}</div>
+            <div class="name">${escapeHtml(u.name)}${isAdminM ? ' 🛡' : ''}${mid === currentUser.id ? ' (вы)' : ''}</div>
+            ${canRemove ? `<button data-remove-member="${mid}">✕</button>` : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+    <div class="close-row" style="flex-wrap:wrap;gap:6px">
+      <button class="cancel" onclick="closeModal()">Закрыть</button>
+      ${isAdminOfGroup ? `<button class="save" onclick="addMembersToGroup()">+ Добавить</button>` : ''}
+      <button class="danger" onclick="leaveGroup()">Покинуть</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.querySelectorAll('[data-remove-member]').forEach(el => el.addEventListener('click', () => removeMember(el.dataset.removeMember)));
+};
+
+window.addMembersToGroup = async function() {
+  if (!activeGroupId) return;
+  const g = groupsCache[activeGroupId];
+  if (!g) return;
+  const contacts = currentUser.contacts || {};
+  const available = Object.keys(contacts).filter(id => usersCache[id] && !g.members[id]);
+  if (available.length === 0) { showToast('Нет доступных контактов', true); return; }
+  document.getElementById('modalContent').innerHTML = `
+    <h2>Добавить участников</h2>
+    <div style="max-height:400px;overflow-y:auto;border:1px solid var(--border);border-radius:10px;padding:8px">
+      ${available.map(id => {
+        const u = usersCache[id];
+        const avStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
+        const avContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
+        return `<label style="display:flex;align-items:center;gap:8px;padding:6px;cursor:pointer">
+          <input type="checkbox" data-uid="${id}" style="width:auto">
+          <div class="avatar"${avStyle} style="width:28px;height:28px;font-size:11px">${avContent}</div>
+          <span style="font-size:13px">${escapeHtml(u.name)}</span>
+        </label>`;
+      }).join('')}
+    </div>
+    <div class="close-row">
+      <button class="cancel" onclick="openGroupInfo()">Назад</button>
+      <button class="save" onclick="confirmAddMembers()">Добавить</button>
+    </div>`;
+};
+window.confirmAddMembers = async function() {
+  const boxes = document.querySelectorAll('#modalContent input[type="checkbox"]');
+  const updates = {};
+  boxes.forEach(cb => { if (cb.checked) updates[`groups/${activeGroupId}/members/${cb.dataset.uid}`] = 'member'; });
+  if (Object.keys(updates).length === 0) { showToast('Никого не выбрано', true); return; }
+  await update(ref(db), updates);
+  showToast('Добавлены');
+  closeModal();
+};
+async function removeMember(mid) {
+  if (!confirm('Удалить участника?')) return;
+  await remove(ref(db, `groups/${activeGroupId}/members/${mid}`));
+  showToast('Удалён');
+  openGroupInfo();
+}
+window.leaveGroup = async function() {
+  if (!activeGroupId) return;
+  if (!confirm('Покинуть группу?')) return;
+  await remove(ref(db, `groups/${activeGroupId}/members/${currentUser.id}`));
+  closeModal();
+  activeGroupId = null;
+  renderChat(); renderGroups(); renderChats();
+  showToast('Вы покинули группу');
+};
+
+/* Посты */
 window.pickPostImage = function() { document.getElementById('fileInputPost').click(); };
 document.getElementById('fileInputPost').addEventListener('change', async e => {
   const f = e.target.files[0]; if (!f) return; e.target.value = '';
@@ -1518,14 +2095,10 @@ function renderPosts() {
     const likeCount = Object.keys(likes).length;
     const avStyle = author.avatar ? ` style="background-image:url('${author.avatar}')"` : '';
     const avContent = author.avatar ? '' : escapeHtml(firstLetter(author.name));
-    return `
-      <div class="post" data-post-id="${p.id}">
+    return `<div class="post" data-post-id="${p.id}">
         <div class="post-head">
           <div class="avatar"${avStyle} data-author="${author.id}">${avContent}</div>
-          <div class="meta">
-            <div class="name">${escapeHtml(author.name)}${author.frozen ? ' ❄' : ''}</div>
-            <div class="time">${formatTime(p.time)}</div>
-          </div>
+          <div class="meta"><div class="name">${escapeHtml(author.name)}${isFrozenActive(author) ? ' ❄' : ''}</div><div class="time">${formatTime(p.time)}</div></div>
         </div>
         ${p.text ? `<div class="post-body">${escapeHtml(p.text)}</div>` : ''}
         ${p.image ? `<img class="post-image" src="${p.image}">` : ''}
@@ -1556,44 +2129,46 @@ async function deletePost(pid) {
   await remove(ref(db, 'posts/' + pid));
 }
 
-/* ============================================================
-   АДМИН-ПАНЕЛЬ
-   ============================================================ */
+/* Админ */
 window.openAdminPanel = function() {
   if (!isAdmin()) return;
   const users = Object.values(usersCache).sort((a,b) => b.createdAt - a.createdAt);
-  const frozen = users.filter(u => u.frozen).length;
+  const frozen = users.filter(u => isFrozenActive(u)).length;
+  const muted = users.filter(u => isMutedActive(u)).length;
   const admins = users.filter(u => u.role === 'admin').length;
   document.getElementById('modalContent').innerHTML = `
     <h2>🛡 Админ-панель</h2>
-    <div class="settings-section">
-      <h3>Статистика</h3>
+    <div class="settings-section"><h3>Статистика</h3>
       <div class="info-row"><span class="label">Всего пользователей</span><span class="value">${users.length}</span></div>
       <div class="info-row"><span class="label">Заморожено</span><span class="value">${frozen}</span></div>
+      <div class="info-row"><span class="label">В муте</span><span class="value">${muted}</span></div>
       <div class="info-row"><span class="label">Админов</span><span class="value">${admins}</span></div>
       <div class="info-row"><span class="label">Чатов</span><span class="value">${Object.keys(chatsCache).length}</span></div>
+      <div class="info-row"><span class="label">Групп</span><span class="value">${Object.keys(groupsCache).length}</span></div>
       <div class="info-row"><span class="label">Постов</span><span class="value">${Object.keys(postsCache).length}</span></div>
     </div>
-    <div class="settings-section">
-      <h3>Пользователи</h3>
-      <div style="max-height:400px;overflow-y:auto">
+    <div class="settings-section"><h3>Пользователи</h3>
+      <div style="max-height:450px;overflow-y:auto">
         ${users.map(u => {
           const avStyle = u.avatar ? ` style="background-image:url('${u.avatar}')"` : '';
           const avContent = u.avatar ? '' : escapeHtml(firstLetter(u.name));
           const isMe = u.id === currentUser.id;
-          return `
-            <div class="admin-user-row">
+          const frozenU = isFrozenActive(u);
+          const mutedU = isMutedActive(u);
+          return `<div class="admin-user-row">
               <div class="avatar"${avStyle}>${avContent}</div>
               <div class="meta">
                 <div class="name">${escapeHtml(u.name)}</div>
                 <div class="id">${u.id}</div>
-                ${u.frozen ? '<div class="status">❄ Заморожен</div>' : ''}
+                ${frozenU ? `<div class="status">❄ ${u.frozenUntil ? 'до ' + new Date(u.frozenUntil).toLocaleString() : 'навсегда'}</div>` : ''}
+                ${mutedU ? `<div class="status" style="color:#ffa726">🔇 ${u.mutedUntil ? 'до ' + new Date(u.mutedUntil).toLocaleString() : 'навсегда'}</div>` : ''}
                 ${u.role === 'admin' ? '<div class="status" style="color:#ffa726">🛡 Админ</div>' : ''}
               </div>
               <div class="actions">
                 <button data-chats="${u.id}" title="Чаты">💬</button>
                 ${!isMe ? `
-                  <button class="${u.frozen ? 'good' : 'warn'}" data-freeze="${u.id}" title="${u.frozen ? 'Разморозить' : 'Заморозить'}">${u.frozen ? '✅' : '❄'}</button>
+                  <button class="${frozenU ? 'good' : 'warn'}" data-frozen="${u.id}" title="Заморозка">${frozenU ? '✅' : '❄'}</button>
+                  <button class="${mutedU ? 'good' : 'warn'}" data-mute="${u.id}" title="Мут">${mutedU ? '🔊' : '🔇'}</button>
                   <button class="danger" data-delete="${u.id}" title="Удалить">🗑</button>
                 ` : ''}
               </div>
@@ -1603,20 +2178,70 @@ window.openAdminPanel = function() {
     </div>
     <div class="close-row"><button class="cancel" onclick="closeModal()">Закрыть</button></div>`;
   document.getElementById('modalOverlay').classList.add('open');
-  document.querySelectorAll('[data-freeze]').forEach(el => el.addEventListener('click', () => adminToggleFreeze(el.dataset.freeze)));
+  document.querySelectorAll('[data-frozen]').forEach(el => el.addEventListener('click', () => adminFrozenDialog(el.dataset.frozen)));
+  document.querySelectorAll('[data-mute]').forEach(el => el.addEventListener('click', () => adminMuteDialog(el.dataset.mute)));
   document.querySelectorAll('[data-delete]').forEach(el => el.addEventListener('click', () => adminDeleteUser(el.dataset.delete)));
   document.querySelectorAll('[data-chats]').forEach(el => el.addEventListener('click', () => adminViewUserChats(el.dataset.chats)));
 };
 
-async function adminToggleFreeze(uid) {
-  if (!isAdmin()) return;
+window.adminFrozenDialog = function(uid) {
   const u = usersCache[uid]; if (!u) return;
   if (u.role === 'admin') { showToast('Нельзя заморозить админа', true); return; }
-  if (!confirm(`${u.frozen ? 'Разморозить' : 'Заморозить'} ${u.name}?`)) return;
-  await update(ref(db, 'users/' + uid), { frozen: !u.frozen });
-  showToast(u.frozen ? 'Разморожен' : 'Заморожен');
+  const isFrozen = isFrozenActive(u);
+  if (isFrozen) {
+    if (!confirm(`Разморозить ${u.name}?`)) return;
+    update(ref(db, 'users/' + uid), { frozen: false, frozenUntil: null });
+    showToast('Разморожен');
+    openAdminPanel();
+    return;
+  }
+  document.getElementById('modalContent').innerHTML = `
+    <h2>❄ Заморозить ${escapeHtml(u.name)}</h2>
+    <p style="color:var(--text-dim);font-size:13px;margin-bottom:14px">Замороженный не сможет войти в аккаунт</p>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <button class="btn secondary" onclick="doFreeze('${uid}', 3600000)">На 1 час</button>
+      <button class="btn secondary" onclick="doFreeze('${uid}', 86400000)">На 24 часа</button>
+      <button class="btn secondary" onclick="doFreeze('${uid}', 604800000)">На 7 дней</button>
+      <button class="btn danger" onclick="doFreeze('${uid}', null)">Навсегда</button>
+    </div>
+    <div class="close-row"><button class="cancel" onclick="openAdminPanel()">Назад</button></div>`;
+};
+window.doFreeze = async function(uid, durationMs) {
+  const patch = { frozen: durationMs === null, frozenUntil: durationMs === null ? null : (Date.now() + durationMs) };
+  await update(ref(db, 'users/' + uid), patch);
+  showToast(durationMs === null ? 'Заморожен навсегда' : 'Заморожен на ' + formatDuration(durationMs));
   openAdminPanel();
-}
+};
+
+window.adminMuteDialog = function(uid) {
+  const u = usersCache[uid]; if (!u) return;
+  if (u.role === 'admin') { showToast('Нельзя замутить админа', true); return; }
+  const isMuted = isMutedActive(u);
+  if (isMuted) {
+    if (!confirm(`Снять мут с ${u.name}?`)) return;
+    update(ref(db, 'users/' + uid), { muted: false, mutedUntil: null });
+    showToast('Мут снят');
+    openAdminPanel();
+    return;
+  }
+  document.getElementById('modalContent').innerHTML = `
+    <h2>🔇 Мут ${escapeHtml(u.name)}</h2>
+    <p style="color:var(--text-dim);font-size:13px;margin-bottom:14px">Может читать, но не может писать</p>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <button class="btn secondary" onclick="doMute('${uid}', 3600000)">На 1 час</button>
+      <button class="btn secondary" onclick="doMute('${uid}', 86400000)">На 24 часа</button>
+      <button class="btn secondary" onclick="doMute('${uid}', 604800000)">На 7 дней</button>
+      <button class="btn danger" onclick="doMute('${uid}', null)">Навсегда</button>
+    </div>
+    <div class="close-row"><button class="cancel" onclick="openAdminPanel()">Назад</button></div>`;
+};
+window.doMute = async function(uid, durationMs) {
+  const patch = { muted: durationMs === null, mutedUntil: durationMs === null ? null : (Date.now() + durationMs) };
+  await update(ref(db, 'users/' + uid), patch);
+  showToast(durationMs === null ? 'Мут навсегда' : 'Мут на ' + formatDuration(durationMs));
+  openAdminPanel();
+};
+
 async function adminDeleteUser(uid) {
   if (!isAdmin()) return;
   const u = usersCache[uid]; if (!u) return;
@@ -1631,6 +2256,9 @@ async function adminDeleteUser(uid) {
     Object.values(usersCache).forEach(x => {
       if (x.contacts && x.contacts[uid]) updates[`users/${x.id}/contacts/${uid}`] = null;
       if (x.blocked && x.blocked[uid]) updates[`users/${x.id}/blocked/${uid}`] = null;
+    });
+    Object.entries(groupsCache).forEach(([gid, g]) => {
+      if (g.members && g.members[uid]) updates[`groups/${gid}/members/${uid}`] = null;
     });
     updates['users/' + uid] = null;
     if (u.uid) updates['uids/' + u.uid] = null;
@@ -1652,18 +2280,15 @@ async function adminViewUserChats(uid) {
     const other = usersCache[otherId];
     const msgs = Object.values(msgsObj || {});
     return `<div class="info-row" data-chatview="${key}" style="cursor:pointer">
-      <span class="label">${other ? escapeHtml(other.name) : otherId} (${otherId})</span>
-      <span class="value">${msgs.length} →</span>
-    </div>`;
+        <span class="label">${other ? escapeHtml(other.name) : otherId} (${otherId})</span>
+        <span class="value">${msgs.length} →</span>
+      </div>`;
   }).join('');
   document.getElementById('modalContent').innerHTML = `
     <h2>Чаты ${escapeHtml(u.name)}</h2>
     <p style="color:var(--text-dim);font-size:13px;margin-bottom:14px">Только просмотр</p>
     ${html}
-    <div class="close-row">
-      <button class="cancel" onclick="openAdminPanel()">← Назад</button>
-      <button class="cancel" onclick="closeModal()">Закрыть</button>
-    </div>`;
+    <div class="close-row"><button class="cancel" onclick="openAdminPanel()">← Назад</button><button class="cancel" onclick="closeModal()">Закрыть</button></div>`;
   document.querySelectorAll('[data-chatview]').forEach(el => el.addEventListener('click', () => adminOpenChatView(el.dataset.chatview)));
 }
 async function adminOpenChatView(key) {
@@ -1675,16 +2300,13 @@ async function adminOpenChatView(key) {
   const html = msgs.map(m => {
     const sender = usersCache[m.from];
     const name = sender ? sender.name : m.from;
-    const text = m.deleted ? '<em>удалено</em>' : (m.image ? '🖼' + (m.text ? ' ' + escapeHtml(m.text) : '') : escapeHtml(m.text));
+    const text = m.deleted ? '<em>удалено</em>' : (m.image ? '🖼' + (m.text ? ' ' + escapeHtml(m.text) : '') : (m.audio ? '🎤' : (m.file ? '📎 ' + escapeHtml(m.file.name) : escapeHtml(m.text))));
     return `<div class="admin-chat-msg"><span class="from">${escapeHtml(name)}</span><span class="time">${formatTime(m.time)}</span><div class="text">${text}</div></div>`;
   }).join('') || '<div class="empty-hint">Нет сообщений</div>';
   document.getElementById('modalContent').innerHTML = `
     <h2>💬 ${escapeHtml(u1?.name || '?')} ↔ ${escapeHtml(u2?.name || '?')}</h2>
     <div style="max-height:60vh;overflow-y:auto;background:var(--bg);border-radius:10px;padding:8px;margin-bottom:14px">${html}</div>
-    <div class="close-row">
-      <button class="cancel" onclick="openAdminPanel()">← Назад</button>
-      <button class="cancel" onclick="closeModal()">Закрыть</button>
-    </div>`;
+    <div class="close-row"><button class="cancel" onclick="openAdminPanel()">← Назад</button><button class="cancel" onclick="closeModal()">Закрыть</button></div>`;
 }
 
 window.closeModal = function() {
@@ -1692,9 +2314,6 @@ window.closeModal = function() {
   document.getElementById('modalContent').innerHTML = '';
 };
 
-/* ============================================================
-   АВТО-ВХОД
-   ============================================================ */
 (async function init() {
   await ensureAdminExists();
   onAuthStateChanged(auth, async (user) => {
@@ -1707,11 +2326,8 @@ window.closeModal = function() {
       const userSnap = await get(ref(db, 'users/' + userId));
       const profile = userSnap.val();
       if (!profile) return;
-      if (profile.frozen) { await signOut(auth); return; }
-      if (!currentUser) {
-        currentUid = user.uid;
-        enterApp(profile);
-      }
+      if (isFrozenActive(profile)) { await signOut(auth); return; }
+      if (!currentUser) { currentUid = user.uid; enterApp(profile); }
     } catch(e) { console.error('init:', e); }
   });
 })();
