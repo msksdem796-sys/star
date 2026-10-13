@@ -872,7 +872,7 @@ async function ensureAdminExists() {
   try {
     const oldSnap = await get(ref(db, 'users/' + OLD_ADMIN_ID));
     if (oldSnap.exists()) await remove(ref(db, 'users/' + OLD_ADMIN_ID));
-    const emailSnap = await get(ref(db, 'email_to_id/' + ADMIN_EMAIL.toLowerCase()));
+    const adminKey = ADMIN_EMAIL.toLowerCase().replace(/\./g, '__dot__'); const emailSnap = await get(ref(db, 'email_to_id/' + adminKey));
     if (emailSnap.exists()) {
       if (auth.currentUser) await signOut(auth);
       return;
@@ -901,7 +901,7 @@ async function ensureAdminExists() {
     };
     await set(ref(db, 'users/' + ADMIN_ID), profile);
     await set(ref(db, 'uids/' + uid), ADMIN_ID);
-    await set(ref(db, 'email_to_id/' + ADMIN_EMAIL.toLowerCase()), ADMIN_ID);
+    const adminKey = ADMIN_EMAIL.toLowerCase().replace(/\./g, '__dot__'); await set(ref(db, 'email_to_id/' + adminKey), ADMIN_ID);
     const cntSnap = await get(ref(db, 'system/counter'));
     if (!cntSnap.exists()) await set(ref(db, 'system/counter'), { digit: START_DIGIT, letterIdx: 0 });
   } catch(e) { console.error('ensureAdmin:', e); }
@@ -920,7 +920,7 @@ window.doRegister = async function() {
   const btn = document.getElementById('regBtn');
   btn.disabled = true; btn.textContent = 'Создание...';
   try {
-    const emailSnap = await get(ref(db, 'email_to_id/' + email.toLowerCase()));
+    const emailKey = email.toLowerCase().replace(/\./g, '__dot__'); const emailSnap = await get(ref(db, 'email_to_id/' + emailKey));
     if (emailSnap.exists()) { msg.textContent = 'Email уже зарегистрирован'; btn.disabled = false; btn.textContent = 'Создать аккаунт'; return; }
     const cred = await createUserWithEmailAndPassword(auth, email, password);
     const uid = cred.user.uid;
@@ -936,7 +936,7 @@ window.doRegister = async function() {
     };
     await set(ref(db, 'users/' + id), user);
     await set(ref(db, 'uids/' + uid), id);
-    await set(ref(db, 'email_to_id/' + email.toLowerCase()), id);
+    await set(ref(db, 'email_to_id/' + emailKey), id);
     await signOut(auth);
     msg.className = 'msg success';
     msg.innerHTML = `★ Аккаунт создан!<br>Ваш ID: <b>${id}</b><br><br>Проверьте почту <b>${escapeHtml(email)}</b>`;
@@ -1895,7 +1895,7 @@ window.deleteAccount = async function() {
     });
     updates['users/' + myId] = null;
     updates['uids/' + currentUid] = null;
-    updates['email_to_id/' + (currentUser.email || '').toLowerCase()] = null;
+    updates['email_to_id/' + (currentUser.email || '').toLowerCase().replace(/\./g, '__dot__')] = null;
     await update(ref(db), updates);
     try { if (auth.currentUser) await deleteUser(auth.currentUser); } catch(e) { console.warn(e); }
     showToast('Аккаунт удалён');
@@ -2262,7 +2262,7 @@ async function adminDeleteUser(uid) {
     });
     updates['users/' + uid] = null;
     if (u.uid) updates['uids/' + u.uid] = null;
-    if (u.email) updates['email_to_id/' + u.email.toLowerCase()] = null;
+    if (u.email) updates['email_to_id/' + u.email.toLowerCase().replace(/\./g, '__dot__')] = null;
     await update(ref(db), updates);
     showToast('Пользователь удалён');
     openAdminPanel();
