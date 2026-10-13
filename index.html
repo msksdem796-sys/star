@@ -86,10 +86,10 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 #appScreen.active { display:flex; }
 .sidebar { width:360px; background:var(--bg-2); border-right:1px solid var(--border);
   display:flex; flex-direction:column; flex-shrink:0; }
-.sidebar-tabs { display:flex; border-bottom:1px solid var(--border); background:var(--bg-2); }
-.sidebar-tabs button { flex:1; padding:14px; border:none; background:transparent;
-  color:var(--text-dim); font-size:13px; font-weight:600; cursor:pointer;
-  border-bottom:2px solid transparent; transition:0.15s; font-family:inherit; }
+.sidebar-tabs { display:flex; border-bottom:1px solid var(--border); background:var(--bg-2); overflow-x:auto; }
+.sidebar-tabs button { flex:1; padding:14px 8px; border:none; background:transparent;
+  color:var(--text-dim); font-size:12px; font-weight:600; cursor:pointer;
+  border-bottom:2px solid transparent; transition:0.15s; font-family:inherit; white-space:nowrap; }
 .sidebar-tabs button.active { color:var(--accent); border-bottom-color:var(--accent); }
 .sidebar-header { padding:14px 16px; border-bottom:1px solid var(--border);
   display:flex; align-items:center; justify-content:space-between; gap:10px; }
@@ -193,7 +193,6 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   color:inherit; text-decoration:none; padding:4px 0; }
 .msg-bubble a.file-link .file-icon { font-size:22px; }
 .msg-bubble a.file-link .file-name { font-size:13px; word-break:break-all; }
-.msg-bubble.frozen { opacity:0.5; }
 .msg-meta { font-size:10px; opacity:0.75; margin-top:3px;
   display:flex; gap:4px; align-items:center; justify-content:flex-end; }
 .msg-bubble.edited .msg-meta::before { content:'изм.'; font-size:9px;
@@ -228,7 +227,7 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
 .input-bar input[type="text"] { flex:1; padding:12px 16px; border-radius:22px;
   border:1px solid var(--border); background:var(--bg); color:var(--text);
-  font-size:15px; outline:none; font-family:inherit; }
+  font-size:15px; outline:none; font-family:inherit; min-width:0; }
 .input-bar input[type="text"]::placeholder { color:var(--text-mute); }
 .input-bar input[type="text"]:focus { border-color:var(--accent); }
 .send-btn { width:46px; height:46px; border-radius:50%; border:none;
@@ -372,6 +371,7 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .call-video .local-video { position:absolute; top:16px; right:16px;
   width:120px; height:160px; border-radius:12px; overflow:hidden;
   border:2px solid #fff; box-shadow:0 4px 16px rgba(0,0,0,0.6); z-index:2; }
+.call-video .local-video video { width:100%; height:100%; }
 .call-info { position:absolute; top:24px; left:24px; z-index:2; }
 .call-info .name { font-size:22px; font-weight:700; }
 .call-info .status { font-size:14px; opacity:0.8; margin-top:4px; }
@@ -379,11 +379,9 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   gap:20px; background:rgba(0,0,0,0.9); }
 .call-controls button { width:64px; height:64px; border-radius:50%; border:none;
   background:#2a3441; color:#fff; font-size:26px; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:0.15s; }
+  display:flex; align-items:center; justify-content:center; transition:0.15s; }
 .call-controls button:hover { background:#3a4551; }
 .call-controls button.end { background:var(--danger); }
-.call-controls button.end:hover { background:var(--danger-hover); }
 .call-controls button.active { background:var(--accent); }
 .incoming-call { position:fixed; bottom:20px; right:20px;
   background:var(--bg-2); border:1px solid var(--accent); border-radius:16px;
@@ -394,7 +392,7 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
 .incoming-call .type { font-size:12px; color:var(--text-dim); margin-bottom:14px; }
 .incoming-call .btns { display:flex; gap:10px; }
 .incoming-call .btns button { flex:1; padding:12px; border-radius:10px;
-  border:none; cursor:pointer; font-weight:700; font-size:14px; }
+  border:none; cursor:pointer; font-weight:700; font-size:14px; font-family:inherit; }
 .incoming-call .btns .accept { background:#4ade80; color:#000; }
 .incoming-call .btns .reject { background:var(--danger); color:#fff; }
 @media (max-width:768px) {
@@ -408,6 +406,7 @@ body { font-family:var(--font); background:var(--bg); color:var(--text);
   .msg-wrap.touched .msg-actions { display:flex !important; }
   .emoji-panel { width:260px; }
   .call-video .local-video { width:90px; height:120px; }
+  .sidebar-tabs button { font-size:11px; padding:12px 6px; }
 }
 </style>
 </head>
@@ -631,7 +630,7 @@ for (let i = 0; i < 26; i++) LETTER_PAIRS.push(String.fromCharCode(65 + i) + 'A'
 for (let i = 1; i < 26; i++) LETTER_PAIRS.push('A' + String.fromCharCode(65 + i));
 for (let i = 1; i < 26; i++) LETTER_PAIRS.push(String.fromCharCode(65 + i) + String.fromCharCode(65 + i));
 
-const EMOJIS = ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','🥰','😍','🤩','😘','😗','😚','😙','😋','😛','😜','🤪','😝','🤗','🤔','🤨','😐','😑','😶','🙄','😏','😣','😥','😮','🤐','😯','😪','😫','🥱','😴','😌','😛','🤤','😒','😓','😔','😕','🙃','🤑','😲','☹️','🙁','😖','😞','😟','😤','😢','😭','😦','😧','😨','😩','🤯','😬','😰','😱','🥵','🥶','😳','🤪','😵','🥴','😠','😡','🤬','😷','🤒','🤕','🤢','🤮','🤧','😇','🥳','🥺','🤠','🤡','🤥','🤫','🤭','🧐','🤓','😈','👿','👹','👺','💀','☠️','👻','👽','👾','🤖','💩','😺','😸','😹','😻','😼','😽','🙀','😿','😾','❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💔','❣️','💕','💞','💓','💗','💖','💘','💝','👍','👎','👌','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','👇','☝️','✋','🤚','🖐','🖖','👋','🤝','🙏','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🧠','🦷','🦴','👀','👁','👅','👄','🔥','⭐','🌟','✨','⚡','☀️','🌤','⛅','🌥','☁️','🌦','🌧','⛈','🌩','🌨','❄️','☃️','⛄','🌬','💨','💧','💦','☔','☂️','🌊','🎉','🎊','🎈','🎁','🎂','🍰','🍕','🍔','🍟','🌭','🍿','🍩','🍪','🍫','🍬','🍭','🍮','☕','🍵','🍺','🍻','🥂','🍷','🥃','🍸','🍹'];
+const EMOJIS = ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','🥰','😍','🤩','😘','😗','😚','😙','😋','😛','😜','🤪','😝','🤗','🤔','🤨','😐','😑','😶','🙄','😏','😣','😥','😮','🤐','😯','😪','😫','🥱','😴','😌','🤤','😒','😓','😔','😕','🤑','😲','☹️','🙁','😖','😞','😟','😤','😢','😭','😦','😧','😨','😩','🤯','😬','😰','😱','🥵','🥶','😳','😵','🥴','😠','😡','🤬','😷','🤒','🤕','🤢','🤮','🤧','🥳','🥺','🤠','🤡','🤥','🤫','🤭','🧐','🤓','😈','👿','👹','👺','💀','☠️','👻','👽','👾','🤖','💩','😺','😸','😹','😻','😼','😽','🙀','😿','😾','❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💔','❣️','💕','💞','💓','💗','💖','💘','💝','👍','👎','👌','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','👇','☝️','✋','🤚','🖐','🖖','👋','🤝','🙏','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🧠','🦷','🦴','👀','👁','👅','👄','🔥','⭐','🌟','✨','⚡','☀️','🌤','⛅','🌥','☁️','🌦','🌧','⛈','🌩','🌨','❄️','☃️','⛄','🌬','💨','💧','💦','☔','☂️','🌊','🎉','🎊','🎈','🎁','🎂','🍰','🍕','🍔','🍟','🌭','🍿','🍩','🍪','🍫','🍬','🍭','🍮','☕','🍵','🍺','🍻','🥂','🍷','🥃','🍸','🍹'];
 
 async function uploadToImgBB(file) {
   const fd = new FormData();
@@ -649,6 +648,10 @@ async function fileToBase64(file) {
     r.onerror = reject;
     r.readAsDataURL(file);
   });
+}
+
+function emailToKey(email) {
+  return String(email).toLowerCase().replace(/\./g, '__dot__');
 }
 
 let currentUser = null;
@@ -708,7 +711,6 @@ function formatSize(bytes) {
   return (bytes/1024/1024).toFixed(2) + ' МБ';
 }
 function chatKey(a, b) { return [a, b].sort().join('_'); }
-function isGroupKey(k) { return k.startsWith('g_'); }
 
 function showToast(text, isError) {
   const t = document.getElementById('toast');
@@ -736,7 +738,7 @@ function closeImageViewer() {
 }
 window.addEventListener('popstate', () => {
   closeImageViewer();
-  if (window.innerWidth <= 768 && activeChatId) closeChat();
+  if (window.innerWidth <= 768 && (activeChatId || activeGroupId)) closeChat();
 });
 window.addEventListener('keydown', e => { if (e.key === 'Escape') { closeImageViewer(); closeModal(); } });
 
@@ -872,7 +874,8 @@ async function ensureAdminExists() {
   try {
     const oldSnap = await get(ref(db, 'users/' + OLD_ADMIN_ID));
     if (oldSnap.exists()) await remove(ref(db, 'users/' + OLD_ADMIN_ID));
-    const adminKey = ADMIN_EMAIL.toLowerCase().replace(/\./g, '__dot__'); const emailSnap = await get(ref(db, 'email_to_id/' + adminKey));
+    const adminKey = emailToKey(ADMIN_EMAIL);
+    const emailSnap = await get(ref(db, 'email_to_id/' + adminKey));
     if (emailSnap.exists()) {
       if (auth.currentUser) await signOut(auth);
       return;
@@ -901,7 +904,7 @@ async function ensureAdminExists() {
     };
     await set(ref(db, 'users/' + ADMIN_ID), profile);
     await set(ref(db, 'uids/' + uid), ADMIN_ID);
-    const adminKey = ADMIN_EMAIL.toLowerCase().replace(/\./g, '__dot__'); await set(ref(db, 'email_to_id/' + adminKey), ADMIN_ID);
+    await set(ref(db, 'email_to_id/' + adminKey), ADMIN_ID);
     const cntSnap = await get(ref(db, 'system/counter'));
     if (!cntSnap.exists()) await set(ref(db, 'system/counter'), { digit: START_DIGIT, letterIdx: 0 });
   } catch(e) { console.error('ensureAdmin:', e); }
@@ -920,7 +923,8 @@ window.doRegister = async function() {
   const btn = document.getElementById('regBtn');
   btn.disabled = true; btn.textContent = 'Создание...';
   try {
-    const emailKey = email.toLowerCase().replace(/\./g, '__dot__'); const emailSnap = await get(ref(db, 'email_to_id/' + emailKey));
+    const emailKey = emailToKey(email);
+    const emailSnap = await get(ref(db, 'email_to_id/' + emailKey));
     if (emailSnap.exists()) { msg.textContent = 'Email уже зарегистрирован'; btn.disabled = false; btn.textContent = 'Создать аккаунт'; return; }
     const cred = await createUserWithEmailAndPassword(auth, email, password);
     const uid = cred.user.uid;
@@ -1136,9 +1140,7 @@ function renderContacts() {
   });
 }
 
-/* ============================================================
-   ГРУППЫ
-   ============================================================ */
+/* Группы */
 window.openCreateGroup = function() {
   groupAvatarPendingImage = '';
   const contacts = currentUser.contacts || {};
@@ -1256,9 +1258,7 @@ function markGroupRead() {
   if (changed) update(ref(db), updates);
 }
 
-/* ============================================================
-   ЧАТЫ
-   ============================================================ */
+/* Чаты */
 window.openChat = function(otherId) {
   if (isBlockedBy(otherId) && !isAdmin()) { showToast('Нельзя писать этому пользователю', true); return; }
   activeChatId = otherId;
@@ -1319,7 +1319,7 @@ function renderChats() {
     const u = usersCache[pid]; if (!u) return '';
     let preview = 'Нет сообщений'; let checkMark = '';
     if (last) {
-      let body = last.deleted ? 'Сообщение удалено' : (last.text || (last.image ? '🖼' : '') || (last.audio ? '🎤' : '') || (last.file ? '📎' : ''));
+      let body = last.deleted ? 'Удалено' : (last.text || (last.image ? '🖼' : '') || (last.audio ? '🎤' : '') || (last.file ? '📎' : ''));
       if (last.from === myId) checkMark = last.read ? '<span class="check">✓✓</span>' : '<span class="check">✓</span>';
       preview = escapeHtml(body);
     }
@@ -1362,7 +1362,7 @@ function renderChat() {
   const blockedByThem = !isGroup && isBlockedBy(activeChatId);
   banner.classList.toggle('show', blocked);
   let canWrite = !blocked && !blockedByThem;
-  if (!isGroup && isMutedActive(currentUser)) { canWrite = false; }
+  if (!isGroup && isMutedActive(currentUser)) canWrite = false;
   inputBar.style.display = canWrite ? 'flex' : 'none';
   blockBtn.style.display = isGroup ? 'none' : '';
   blockBtn.textContent = blocked ? '✅' : '🚫';
@@ -1417,7 +1417,7 @@ function renderMessage(m, isGroup) {
     if (m.text) contentHtml += `<div>${escapeHtml(m.text)}</div>`;
   }
   const checkHtml = (isOut && !isGroup) ? `<span>${m.read ? '✓✓' : '✓'}</span>` : '';
-  const canEdit = !m.deleted && isOut && m.text && !m.image && !m.audio && !m.file;
+  const canEdit = !m.deleted && isOut && m.text && !m.image && !m.audio && !m.file && !isGroup;
   const actions = (!m.deleted && isOut) ? `<div class="msg-actions">
       ${canEdit ? `<button data-action="edit" data-mid="${m.id}" title="Изменить">✏</button>` : ''}
       <button data-action="delete" data-mid="${m.id}" class="danger" title="Удалить">🗑</button>
@@ -1489,7 +1489,6 @@ async function deleteMessage(mid, isGroup) {
   await update(ref(db, path), { deleted: true, text: '', image: '', audio: '', file: null });
 }
 
-/* Вложения */
 window.pickAttachment = function() { document.getElementById('fileInputMsg').click(); };
 window.pickFile = function() { document.getElementById('fileInputFile').click(); };
 
@@ -1535,7 +1534,6 @@ async function sendToActive(content) {
   await set(newRef, payload);
 }
 
-/* Голосовые */
 window.toggleVoiceRecord = async function() {
   if (mediaRecorder && mediaRecorder.state === 'recording') { stopVoiceRecord(); return; }
   if (isMutedActive(currentUser)) { showToast('Вы в муте', true); return; }
@@ -1543,17 +1541,18 @@ window.toggleVoiceRecord = async function() {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     audioChunks = [];
     recordingStart = Date.now();
-    mediaRecorder = new MediaRecorder(stream, { mimeType: MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4' });
+    const mime = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4';
+    mediaRecorder = new MediaRecorder(stream, { mimeType: mime });
     mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
     mediaRecorder.onstop = async () => {
       stream.getTracks().forEach(t => t.stop());
-      const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+      const blob = new Blob(audioChunks, { type: mime });
       document.getElementById('voiceBtn').classList.remove('rec');
       if (blob.size < 1000) { showToast('Слишком короткая запись', true); return; }
       const duration = Date.now() - recordingStart;
       showLoading(true, 'Отправка голосового...');
       try {
-        const file = new File([blob], 'voice.webm', { type: blob.type });
+        const file = new File([blob], 'voice.webm', { type: mime });
         const url = await uploadToImgBB(file);
         await sendToActive({ audio: url, duration });
       } catch(err) { showToast('Ошибка: ' + err.message, true); }
@@ -1568,7 +1567,6 @@ function stopVoiceRecord() {
   if (mediaRecorder && mediaRecorder.state === 'recording') mediaRecorder.stop();
 }
 
-/* Эмодзи */
 window.toggleEmoji = function() {
   const panel = document.getElementById('emojiPanel');
   if (panel.classList.contains('open')) { panel.classList.remove('open'); return; }
@@ -1584,7 +1582,6 @@ window.toggleEmoji = function() {
   panel.classList.add('open');
 };
 
-/* Звонки */
 function startCallListener() {
   if (callUnsub) callUnsub();
   callUnsub = onValue(ref(db, 'calls'), snap => {
@@ -1625,13 +1622,9 @@ async function startCall(type) {
     const cid = push(ref(db, 'calls')).key;
     currentCallId = cid;
     await set(ref(db, 'calls/' + cid), {
-      from: currentUser.id,
-      to: activeChatId,
-      type,
-      status: 'ringing',
-      createdAt: Date.now(),
-      offer: null,
-      answer: null
+      from: currentUser.id, to: activeChatId, type,
+      status: 'ringing', createdAt: Date.now(),
+      offer: null, answer: null
     });
     showCallUI(other.name, type);
     document.getElementById('localVideo').srcObject = stream;
@@ -1761,11 +1754,9 @@ window.toggleCamera = function() {
   document.getElementById('camBtn').classList.toggle('active', isCamOff);
 };
 window.toggleSpeaker = function() {
-  const btn = document.getElementById('speakerBtn');
-  btn.classList.toggle('active');
+  document.getElementById('speakerBtn').classList.toggle('active');
 };
 
-/* Профиль */
 window.openProfileSettings = function() {
   avatarPendingImage = currentUser.avatar || '';
   wallpaperPendingImage = currentUser.wallpaper || '';
@@ -1895,7 +1886,7 @@ window.deleteAccount = async function() {
     });
     updates['users/' + myId] = null;
     updates['uids/' + currentUid] = null;
-    updates['email_to_id/' + (currentUser.email || '').toLowerCase().replace(/\./g, '__dot__')] = null;
+    if (currentUser.email) updates['email_to_id/' + emailToKey(currentUser.email)] = null;
     await update(ref(db), updates);
     try { if (auth.currentUser) await deleteUser(auth.currentUser); } catch(e) { console.warn(e); }
     showToast('Аккаунт удалён');
@@ -2056,7 +2047,6 @@ window.leaveGroup = async function() {
   showToast('Вы покинули группу');
 };
 
-/* Посты */
 window.pickPostImage = function() { document.getElementById('fileInputPost').click(); };
 document.getElementById('fileInputPost').addEventListener('change', async e => {
   const f = e.target.files[0]; if (!f) return; e.target.value = '';
@@ -2129,7 +2119,6 @@ async function deletePost(pid) {
   await remove(ref(db, 'posts/' + pid));
 }
 
-/* Админ */
 window.openAdminPanel = function() {
   if (!isAdmin()) return;
   const users = Object.values(usersCache).sort((a,b) => b.createdAt - a.createdAt);
@@ -2262,7 +2251,7 @@ async function adminDeleteUser(uid) {
     });
     updates['users/' + uid] = null;
     if (u.uid) updates['uids/' + u.uid] = null;
-    if (u.email) updates['email_to_id/' + u.email.toLowerCase().replace(/\./g, '__dot__')] = null;
+    if (u.email) updates['email_to_id/' + emailToKey(u.email)] = null;
     await update(ref(db), updates);
     showToast('Пользователь удалён');
     openAdminPanel();
